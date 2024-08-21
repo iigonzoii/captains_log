@@ -18,6 +18,7 @@ def seed_courses():
 
 
     db.session.add(course_one)
+    
     db.session.add(course_two)
     db.session.add(course_three)
     db.session.add(course_four)
