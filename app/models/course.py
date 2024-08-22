@@ -16,10 +16,10 @@ class Course(db.Model):
     name = db.Column(db.String(50), nullable=False)
     surface = db.Column(db.String(50))
     gas = db.Column(db.Integer)
-    resources = db.Column(db.Integer)
+    resource_access = db.Column(db.Integer)
     difficulty = db.Column(db.Integer)
     curved_roads = db.Column(db.Integer)
-    city = db.Column(db.String(50), nullable=False)
+    origin_city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
     country = db.Column(db.String(50), nullable=False)
     log_entry = db.Column(db.Text)
@@ -35,10 +35,10 @@ class Course(db.Model):
             'name': self.name,
             'surface': self.surface,
             'gas': self.gas,
-            'resources': self.resources,
+            'resource_access': self.resource_access,
             'difficulty': self.difficulty,
             'curved_roads': self.curved_roads,
-            'city': self.city,
+            'origin_city': self.origin_city,
             'state': self.state,
             'country': self.country,
             'created_at': self.created_at,
