@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from sqlalchemy.orm import joinedload
 from flask_login import current_user, login_required
 from app.models import Course, User, db
-# from app.forms import AlbumForm, UpdateAlbumForm, ReviewPostForm, TrackPostForm, ProductForm
+from app.forms import CourseForm, UpdateCourseForm
 
 course_routes = Blueprint('courses', __name__)
 
@@ -35,56 +35,71 @@ def courses_by_user():
 
 
 #* Create a new course
-# @album_routes.route('/', methods=['GET', 'POST'])
-# @login_required
-# def create_album():
-#     form = AlbumForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         new_album = Album(
-#             user_id=current_user.id,
-#             band=form.band.data,
-#             title=form.title.data,
-#             cover_image_url=form.cover_image_url.data,
-#             description=form.description.data,
-#             producer=form.producer.data,
-#             genre=form.genre.data,
-#             tags=form.tags.data,
-#         )
+@course_routes.route('/', methods=['GET', 'POST'])
+@login_required
+def create_album():
+    form = CourseForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        new_course = Course(
+            owner_id=current_user.id,
+            highlight_img=form.highlight_img.data,
+            img_1=form.img_1.data,
+            img_2=form.img_2.data,
+            img_3=form.img_3.data,
+            img_4=form.img_4.data,
+            name=form.name.data,
+            surface=form.surface.data,
+            gas=form.gas.data,
+            resource_access=form.resource_access.data,
+            difficulty=form.difficulty.data,
+            curved_roads=form.curved_roads.data,
+            origin_city=form.origin_city.data,
+            state=form.state.data,
+            country=form.country.data,
+            log_entry=form.log_entry.data,
+        )
 
-#         db.session.add(new_album)
-#         db.session.commit()
+        db.session.add(new_course)
+        db.session.commit()
 
-#         return new_album.to_dict(), 201
+        return new_course.to_dict(), 201
 
-#     return {'errors': form.errors}, 400
+    return {'errors': form.errors}, 400
 
 #* Update course by id
-# @album_routes.route('/<int:album_id>/', methods=['PUT'])
-# @login_required
-# def update_album(album_id):
-#     album_update = Album.query.filter(Album.id == album_id).first()
+@course_routes.route('/<int:course_id>/', methods=['PUT'])
+@login_required
+def update_course(course_id):
+    course_update = Course.query.filter(Course.id == course_id).first()
 
-#     if not album_update:
-#         return {'errors': {'message': 'Album not found'}}, 404
-#     if album_update.user_id != current_user.id:
-#         return {'errors': {'message': 'Unauthorized'}}, 401
+    if not course_update:
+        return {'errors': {'message': 'Course not found'}}, 404
+    if course_update.owner_id != current_user.id:
+        return {'errors': {'message': 'Unauthorized'}}, 401
 
-#     form = UpdateAlbumForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
+    form = UpdateCourseForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-#     if form.validate_on_submit():
-#         album_update.band = form.band.data
-#         album_update.title = form.title.data
-#         album_update.cover_image_url = form.cover_image_url.data
-#         album_update.description = form.description.data
-#         album_update.producer = form.producer.data
-#         album_update.genre = form.genre.data
-#         album_update.tags = form.tags.data
-
-#         db.session.commit()
-#         return album_update.to_dict()
-#     return form.errors, 401
+    if form.validate_on_submit():
+            course_update.highlight_img=form.highlight_img.data
+            course_update.img_1=form.img_1.data
+            course_update.img_2=form.img_2.data
+            course_update.img_3=form.img_3.data
+            course_update.img_4=form.img_4.data
+            course_update.name=form.name.data
+            course_update.surface=form.surface.data
+            course_update.gas=form.gas.data
+            course_update.resource_access=form.resource_access.data
+            course_update.difficulty=form.difficulty.data
+            course_update.curved_roads=form.curved_roads.data
+            course_update.origin_city=form.origin_city.data
+            course_update.state=form.state.data
+            course_update.country=form.country.data
+            course_update.log_entry=form.log_entry.data
+            db.session.commit()
+            return course_update.to_dict()
+    return form.errors, 401
 
 
 

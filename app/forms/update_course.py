@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired, Optional, Length
 
-class CourseForm(FlaskForm):
+class UpdateCourseForm(FlaskForm):
     owner_id = IntegerField('Owner ID', validators=[DataRequired()])
     highlight_img = StringField('Highlight Image URL', validators=[Length(max=250), Optional()])
     img_1 = StringField('Image 1', validators=[Length(max=250), Optional()])
