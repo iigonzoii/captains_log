@@ -3,7 +3,6 @@ import { useModal } from "../../context/Modal"
 import { deleteCourse } from "../../redux/courseReducer"
 import { useState } from "react"
 
-// ! spot id is comming from the modal button manage spots which will be our captains quarters page
 function DeleteCourse({ courseId }) {
     const { closeModal } = useModal()
     const dispatch = useDispatch()

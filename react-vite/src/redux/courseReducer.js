@@ -125,7 +125,7 @@ export const fetchCurrUserCourses = () => async (dispatch) => {
 };
 
 
-//* Create an course
+//* Create a course
 export const createCourse = (course) => async (dispatch) => {
     try {
         const response = await fetch(`/api/courses/`, {
