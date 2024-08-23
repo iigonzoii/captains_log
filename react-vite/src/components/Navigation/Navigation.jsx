@@ -7,14 +7,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Navigation() {
-  let courseData = useSelector((state) => state.album);
+  let courseData = useSelector((state) => state.course);
   // courseData = Object.values(courseData)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCourses());
-    console.log("COURSEFETCHDATA",courseData)
   }, [dispatch]);
+  console.log("COURSEFETCHDATA",courseData)
 
   return (
     <ul>
