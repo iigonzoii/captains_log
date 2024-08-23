@@ -1,0 +1,6 @@
+.cm-img {
+    height: 250px;
+    width: 250px;
+    border: solid yellow;
+    object-fit:contain;
+}
