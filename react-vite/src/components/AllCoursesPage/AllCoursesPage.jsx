@@ -14,16 +14,6 @@ function AllCoursesPage() {
         dispatch(fetchCourses());
     }, [dispatch]);
 
-// todo make backround image of div the scroll
-    //* i think replace the img tag with a div, set class with background image using scroll url
-// todo overlay data on the image
-    //* i think we will set the p tags inside the div, probably display the div flex, direction column, align-center. do flex start for name and flex end for state or the other way
-        //* switch cases checking each course.attribute for numbers 1 thourgh five and returning the same amount of x's?
-// todo make a mobile friendly container
-    //* outer div container displaying grid, two columns, two rows, on media query make it one column, four rows
-// todo
-// todo
-// todo
     return (
         <div className="cm-container">
             {courseData && courseData.map((course, index) => (

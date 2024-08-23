@@ -158,7 +158,7 @@ const courseReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_COURSES: {
             let newState = {}
-            action.courses.courses.forEach(course => {console.log(course)})
+            // action.courses.courses.forEach(course => {console.log(course)})
             action.courses.courses.forEach(course => {
                 newState[course.id] = course
             })
