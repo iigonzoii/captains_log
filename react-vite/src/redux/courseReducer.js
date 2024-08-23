@@ -48,7 +48,7 @@ export const removeCourse = (courseId) => ({
 
 //* Get all courses
 export const fetchCourses = () => async (dispatch) => {
-    const response = await fetch('/api/courses');
+    const response = await fetch('/api/courses/');
     const courses = await response.json();
     // console.log(courses)
     dispatch(loadCourses(courses));
@@ -158,6 +158,7 @@ const courseReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_COURSES: {
             let newState = {}
+            console.log("ACTIONACTIONACTION-------------",action.courses.courses.forEach(course => {console.log(course)}))
             action.courses.courses.forEach(course => {
                 newState[course.id] = course
             })
