@@ -180,30 +180,13 @@ const courseReducer = (state = initialState, action) => {
                     courseDetail: action.payload
                 };
             }
-            case UPDATE_PRODUCTS: {
-                const { courseId, payload } = action;
-                // console.log("Payload:", payload)
-                return {
-                    ...state,
-                    [courseId]: {
-                        ...state[courseId],
-                        products: payload
-                    }
-                };
-            }
 
         case CREATE_COURSE:
                 return {
                     ...state,
                     [action.course.id]: action.course
                 };
-        case CREATE_PRODUCTS: {
-                    const newState = { ...state };
-                    action.products.products.forEach(product => {
-                        newState[product.id] = product;
-                    });
-                    return newState;
-                }
+
         case USER_COURSES: {
                     const newState = {};
                     action.courses.courses.forEach(course => {
@@ -216,7 +199,6 @@ const courseReducer = (state = initialState, action) => {
             delete newState[action.courseId];
             return newState;
         }
-
 
         default:
             return state;
