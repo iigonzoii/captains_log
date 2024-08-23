@@ -20,6 +20,7 @@ function CaptainsQuarters() {
 
     const dispatch = useDispatch();
     userCourses= Object.values(userCourses);
+    // console.log("")
 
     useEffect(() => {
         dispatch(fetchCurrUserCourses());
