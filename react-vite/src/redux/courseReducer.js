@@ -51,7 +51,7 @@ export const fetchCourses = () => async (dispatch) => {
     const response = await fetch('/api/courses/');
     const courses = await response.json();
     // console.log(courses)
-    dispatch(loadCourses(courses));
+    dispatch(loadCourses(courses.courses));
 };
 
 
@@ -159,7 +159,7 @@ const courseReducer = (state = initialState, action) => {
         case LOAD_COURSES: {
             let newState = {}
             // action.courses.courses.forEach(course => {console.log(course)})
-            action.courses.courses.forEach(course => {
+            action.courses.forEach(course => {
                 newState[course.id] = course
             })
             return newState

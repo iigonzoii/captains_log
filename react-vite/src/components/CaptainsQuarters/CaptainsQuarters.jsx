@@ -1,7 +1,10 @@
 import { fetchCurrUserCourses } from "../../redux/courseReducer";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+import { Link  } from "react-router-dom";
+// useNavigate
+import DeleteCourse from "../DeleteCourse/DeleteCourse";
+import OpenModalButton from "../OpenModalButton"
 
 import "./CQ.css"
 // todo Get all current users courses
@@ -13,6 +16,8 @@ import "./CQ.css"
 
 function CaptainsQuarters() {
     let userCourses = useSelector((state) => state.course);
+    // let user = useSelector(state => state.session.user)
+
     const dispatch = useDispatch();
     userCourses= Object.values(userCourses);
 
@@ -30,8 +35,16 @@ function CaptainsQuarters() {
                     // !might have to put forward slash on this
                     // onClick={() => navigate(`/courses/${course.id}`)}
                     key={index}>
-
-                    
+                        <p>courseId - {course.id}</p>
+                        <p>ownerId - {course.owner_id}</p>
+                        <span>
+                                <Link to={`/courses/${course.id}/update`}><button className="update-button">Update</button></Link>
+                                <OpenModalButton
+                                    cssm="manage-delete"
+                                    buttonText="Delete"
+                                    modalComponent={<DeleteCourse courseId={course.id} />}
+                                />
+                            </span>
                 </div>
             ))}
         </div>
