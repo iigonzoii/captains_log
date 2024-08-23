@@ -2,7 +2,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
-import CourseMapper from '../components/AllCoursesPage/CourseMapper';
+// import CourseMapper from '../components/AllCoursesPage/CourseMapper';
+import AllCoursesPage from '../components/AllCoursesPage/AllCoursesPage';
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/courses",
-        element: <CourseMapper />,
+        element: <AllCoursesPage />,
       }
     ],
   },
