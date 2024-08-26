@@ -1,5 +1,5 @@
 import { fetchCurrUserCourses } from "../../redux/courseReducer";
-import { useEffect,} from "react";
+import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // useNavigate useState
@@ -19,11 +19,10 @@ function CaptainsQuarters() {
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
     userCourses = Object.values(userCourses);
-
     useEffect(() => {
+        if(user)
         dispatch(fetchCurrUserCourses())
     }, [dispatch]);
-    console.log("USERCOURSES", userCourses)
     if (!user) {
         return <p>Log In to enter Captains Quarters</p>;
     }
@@ -31,16 +30,13 @@ function CaptainsQuarters() {
         <>
                 <div className="cm-container">
                     {userCourses && userCourses.map((course, index) => (
-
                         <div className='cq-card'
                             title={`${course.name}`}
-                            // !might have to put forward slash on this
-                            // onClick={() => navigate(`/courses/${course.id}`)}
                             key={index}>
                             <p>courseId - {course.id}</p>
                             <p>ownerId - {course.owner_id}</p>
                             <span>
-                                <Link to={`/courses/${course.id}/update`}><button className="update-button">Update</button></Link>
+                                <Link to={`/courses/${course.id}/edit`}><button className="update-button">Update</button></Link>
                                 <OpenModalButton
                                     cssm="manage-delete"
                                     buttonText="Delete"
