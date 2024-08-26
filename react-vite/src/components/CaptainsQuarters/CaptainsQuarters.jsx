@@ -17,25 +17,18 @@ import "./CQ.css"
 function CaptainsQuarters() {
     let userCourses = useSelector((state) => state.course);
     const user = useSelector((state) => state.session.user);
-    // let user = useSelector(state => state.session.user)
-    // let user = useSelector((state) => state.session.user.id)
-    // console.log("user", user)
-    // const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch();
     userCourses = Object.values(userCourses);
-    // console.log("")
-// .then(() => setIsLoaded(true));
+
     useEffect(() => {
         dispatch(fetchCurrUserCourses())
     }, [dispatch]);
     console.log("USERCOURSES", userCourses)
-    // isLoaded &&
     if (!user) {
         return <p>Log In to enter Captains Quarters</p>;
     }
-    return  (
+    return (
         <>
-
                 <div className="cm-container">
                     {userCourses && userCourses.map((course, index) => (
 
