@@ -29,8 +29,8 @@ function AllCoursesPage() {
                         <p className='data-container-item bottom-item'>Difficulty{course.difficulty}</p>
                         <p className='data-container-item'>GAS{course.gas}</p>
                         <p className='data-container-item bottom-item'>ID {course.id}</p>
-                        <p className='data-container-item bottom-item'>Denver{course.orign_city}</p>
-                        <p className='data-container-item bottom-item'>STATE{course.state}</p>
+                        <p className='data-container-item bottom-item'>{course.origin_city}</p>
+                        <p className='data-container-item bottom-item'>{course.state}</p>
                     </div>
                 </div>
             ))}
