@@ -1,21 +1,21 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./UC.css";
 import { useNavigate, useParams} from "react-router-dom";
-import {  fetchUpdateCourse } from "../../redux/courseReducer";
-// fetchCurrUserCourses,, useEffect, NavLink
+import {  fetchUpdateCourse, fetchCurrUserCourses } from "../../redux/courseReducer";
+
 function UpdateCourse() {
+    const { course_id } = useParams()
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.session.user);
     const courses = useSelector((state) => state.course)
     //* find the course we want to edit by id
-    const { course_id } = useParams()
     const course = Object.values(courses).find(course => course.id === parseInt(course_id));
 
     //*initialize state with course data if it exists
-    const [id] = useState(course ? course.id :"")
+    // const [id] = useState(course ? course.id :"")
     const [highlightImg, setHighlightImg] = useState(course ? course.highlight_img :"");
     const [imgOne, setImgOne] = useState(course ? course.img_1 :"");
     const [imgTwo, setImgTwo] = useState(course ? course.img_2 :"");
@@ -33,6 +33,33 @@ function UpdateCourse() {
     const [logEntry, setLogEntry] = useState(course ? course.log_entry :"");
     const [errors, setErrors] = useState({});
 
+    useEffect(() => {
+        if (user) {
+          dispatch(fetchCurrUserCourses()); // Fetch the user's albums on mount
+        }
+      }, [dispatch, user]);
+
+      useEffect(() => {
+        // Update form fields when the course is loaded from the Redux store
+        if (course) {
+            setHighlightImg(course.highlight_img || "");
+            setImgOne(course.img_1 || "");
+            setImgTwo(course.img_2 || "");
+            setImgThree(course.img_3 || "");
+            setImgFour(course.img_4 || "");
+            setName(course.name || "");
+            setSurface(course.surface || 0);
+            setGas(course.gas || 0);
+            setResourceAccess(course.resource_access ||  0);
+            setDifficulty(course.difficulty ||  0);
+            setCurvedRoads(course.curved_roads || 0);
+            setOriginCity(course.origin_city || "");
+            setState(course.state || "");
+            setCountry(course.country || "");
+            setLogEntry(course.log_entry || "")
+          }
+        }, [course]);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrors({});
@@ -48,9 +75,9 @@ function UpdateCourse() {
             return;
         }
         // !if issues may have to change the state variables that require numbers to empty () instead of empty string
+
         const payload = {
             owner_id: user.id,
-            id,
             name,
             highlight_img: highlightImg,
             img_1: imgOne,
@@ -69,7 +96,7 @@ function UpdateCourse() {
         };
 
         try {
-            console.log("EDITCOURSE",payload);
+            // console.log("EDITCOURSE",payload);
             await dispatch(fetchUpdateCourse(payload));
         }
         catch (err) {
@@ -180,6 +207,7 @@ function UpdateCourse() {
                     <h2>Log Your Experience!</h2>
                     <textarea
                         value={logEntry}
+
                         onChange={e => setLogEntry(e.target.value)}
                         placeholder="Log your experience as you go!"
                         className="textarea-field"

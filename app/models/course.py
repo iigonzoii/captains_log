@@ -44,6 +44,7 @@ class Course(db.Model):
             'curved_roads': self.curved_roads,
             'origin_city': self.origin_city,
             'state': self.state,
+            'log_entry': self.log_entry,
             'country': self.country,
             'created_at': self.created_at,
             'updated_at': self.updated_at
