@@ -28,8 +28,8 @@ function CaptainsQuarters() {
     }
     return (
         <div className="cq-container">
-        <div>
-            <div className="cq-banner-img">bannerImg</div>
+        <div className="cq-banner-area">
+            <img className="cq-banner-img" src="https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/70West.jpg?alt=media&token=72fef901-1ee7-483d-8bf5-3da3c577e980"/>
             <img className="cq-pro-img" src="https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/nimbus.jpg?alt=media&token=f15b6a24-fa1f-4977-8bf6-3d5f44983b66"/>
         </div>
         <div className="cq-transport">transport

@@ -1,26 +1,73 @@
-/* .container {
+.cq-container {
     max-width: 900px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
-        "header header header header"
-        "main main . sidebar"
-        "footer footer footer footer";
-} */
+        "banner banner banner banner"
+        "course course transport transport"
+        "course course transport transport";
+        margin: 0 auto;
+        color: white;
+}
+.cq-banner-area{
+    grid-area: banner;
+}
+.cq-card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-area: course;
+}
 .cq-card {
     height: 150px;
     width: 150px;
-    /* border: solid yellow 1px; */
     object-fit: contain;
     background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/route_log.png?alt=media&token=fdb9ac91-8503-42be-ab1e-b262d910963b");
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgb(10, 10, 10);
+    color: lightgray;
+    margin: 5px;
 }
 
+.cq-banner-img{
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+
+}
+.cq-pro-img{
+    height: 250px;
+    width: 250px;
+    object-fit:contain;
+    border-radius: 120px;
+    position: relative;
+    top: -100px;
+    left: 60px;
+}
+.cq-transport{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: transport;
+}
+
+.cq-update-button {
+    background-color: transparent;
+    color: lightgray;
+    align-self: flex-start;
+    border: none;
+    margin-right: 2pc;
+    box-shadow: 5px 5px 5px black;
+}
+.cq-card-buttons {
+    position: relative;
+    display: flex;
+    top: 21px;
+}
 
 
 @media (max-width: 700px) {
@@ -34,50 +81,11 @@
         color: lightgray;
         border: solid 1px red;
     }
-    .cq-card-container{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .cq-card {
-        height: 150px;
-        width: 150px;
-        border: solid green 1px;
-        object-fit: contain;
-        background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/route_log.png?alt=media&token=fdb9ac91-8503-42be-ab1e-b262d910963b");
-        background-size: cover;
-        display: flex;
-        align-items: center;
-        color:lightgray;
-        margin: 5px;
-    }
-
-    .cq-card-buttons {
-        position: relative;
-        display: flex;
-        top: 21px;
-    }
-    .cq-update-button {
-        background-color: transparent;
-        color: lightgray;
-        align-self: flex-start;
-        border: none;
-        margin-right: 2pc;
-        box-shadow: 5px 5px 5px black;
-    }
     .cq-pro-img{
-        height: 250px;
-        width: 250px;
         object-fit:scale-down;
-        border-radius: 100px;
+        position: relative;
     }
     .cq-banner-img{
         display: none;
-    }
-    .cq-transport{
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 }
