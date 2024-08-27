@@ -39,7 +39,7 @@ function CaptainsQuarters() {
             <div>V2 here will be a vehicle with update delete</div>
             <div>V2 here will an add vehicle button</div>
         </div>
-                <div>
+                <div className="cq-card-container">
                     {userCourses && userCourses.map((course, index) => (
                         <div className='cq-card'
                             title={`${course.name}`}

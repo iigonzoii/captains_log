@@ -34,18 +34,22 @@
         color: lightgray;
         border: solid 1px red;
     }
-
+    .cq-card-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
     .cq-card {
         height: 150px;
         width: 150px;
-        /* border: solid green 1px; */
+        border: solid green 1px;
         object-fit: contain;
         background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/route_log.png?alt=media&token=fdb9ac91-8503-42be-ab1e-b262d910963b");
         background-size: cover;
         display: flex;
         align-items: center;
         color:lightgray;
-        margin: 5px 0px 5px 0px;
+        margin: 5px;
     }
 
     .cq-card-buttons {
@@ -62,8 +66,8 @@
         box-shadow: 5px 5px 5px black;
     }
     .cq-pro-img{
-        height: 150px;
-        width: 150px;
+        height: 250px;
+        width: 250px;
         object-fit:scale-down;
         border-radius: 100px;
     }
