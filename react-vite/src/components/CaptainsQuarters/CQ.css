@@ -90,4 +90,8 @@
     .cq-banner-img{
         display: none;
     }
+    .cq-transport{
+        align-content: center;
+        
+    }
 }

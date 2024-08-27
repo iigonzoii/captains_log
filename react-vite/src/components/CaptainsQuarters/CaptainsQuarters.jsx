@@ -5,14 +5,7 @@ import { Link } from "react-router-dom";
 // useNavigate useState
 import DeleteCourse from "../DeleteCourse/DeleteCourse";
 import OpenModalButton from "../OpenModalButton"
-
 import "./CQ.css"
-// todo Get all current users courses
-//* useEffect or maybe that useApi to get current courses
-// todo Update Course
-//*navigate to an update course form, or preferably set up a modal
-// todo Delete Course
-//* same as update course
 
 function CaptainsQuarters() {
     let userCourses = useSelector((state) => state.course);
