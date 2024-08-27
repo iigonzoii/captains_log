@@ -1,12 +1,79 @@
-.cq-card{
+/* .container {
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header header header header"
+        "main main . sidebar"
+        "footer footer footer footer";
+} */
+.cq-card {
     height: 150px;
     width: 150px;
-    border: solid yellow 1px;
-    object-fit:contain;
+    /* border: solid yellow 1px; */
+    object-fit: contain;
     background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/route_log.png?alt=media&token=fdb9ac91-8503-42be-ab1e-b262d910963b");
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: rgb(10, 10, 10);
+}
+
+
+
+@media (max-width: 700px) {
+
+    .cq-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        align-items: center;
+        color: lightgray;
+        border: solid 1px red;
+    }
+
+    .cq-card {
+        height: 150px;
+        width: 150px;
+        /* border: solid green 1px; */
+        object-fit: contain;
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/route_log.png?alt=media&token=fdb9ac91-8503-42be-ab1e-b262d910963b");
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        color:lightgray;
+        margin: 5px 0px 5px 0px;
+    }
+
+    .cq-card-buttons {
+        position: relative;
+        display: flex;
+        top: 21px;
+    }
+    .cq-update-button {
+        background-color: transparent;
+        color: lightgray;
+        align-self: flex-start;
+        border: none;
+        margin-right: 2pc;
+        box-shadow: 5px 5px 5px black;
+    }
+    .cq-pro-img{
+        height: 150px;
+        width: 150px;
+        object-fit:scale-down;
+        border-radius: 100px;
+    }
+    .cq-banner-img{
+        display: none;
+    }
+    .cq-transport{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

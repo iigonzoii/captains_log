@@ -27,18 +27,29 @@ function CaptainsQuarters() {
         return <p>Log In to enter Captains Quarters</p>;
     }
     return (
-        <>
-                <div className="cm-container">
+        <div className="cq-container">
+        <div>
+            <div className="cq-banner-img">bannerImg</div>
+            <img className="cq-pro-img" src="https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/nimbus.jpg?alt=media&token=f15b6a24-fa1f-4977-8bf6-3d5f44983b66"/>
+        </div>
+        <div className="cq-transport">transport
+            <div>V2 here will be a vehicle with update delete</div>
+            <div>V2 here will be a vehicle with update delete</div>
+            <div>V2 here will be a vehicle with update delete</div>
+            <div>V2 here will be a vehicle with update delete</div>
+            <div>V2 here will an add vehicle button</div>
+        </div>
+                <div>
                     {userCourses && userCourses.map((course, index) => (
                         <div className='cq-card'
                             title={`${course.name}`}
                             key={index}>
                             <p>courseId - {course.id}</p>
                             <p>ownerId - {course.owner_id}</p>
-                            <span>
-                                <Link to={`/courses/${course.id}/edit`}><button className="update-button">Update</button></Link>
+                            <span className="cq-card-buttons">
+                                <Link to={`/courses/${course.id}/edit`}><button className="cq-update-button">Update</button></Link>
                                 <OpenModalButton
-                                    cssm="manage-delete"
+                                    cssm="cq-delete"
                                     buttonText="Delete"
                                     modalComponent={<DeleteCourse courseId={course.id} />}
                                 />
@@ -47,7 +58,7 @@ function CaptainsQuarters() {
                     ))}
                 </div>
 
-        </>
+        </div>
     )
 }
 
