@@ -57,6 +57,8 @@
     grid-area: transport;
     align-content: flex-end;
     justify-content: space-between;
+    position: relative;
+    top:-100px
 }
 
 .cq-update-button {
@@ -92,6 +94,7 @@
     }
     .cq-transport{
         align-content: center;
-        
+        position: static;
+
     }
 }
