@@ -70,7 +70,7 @@ function UpdateCourse() {
 
         try {
             console.log("EDITCOURSE",payload);
-            dispatch(fetchUpdateCourse(payload));
+            await dispatch(fetchUpdateCourse(payload));
         }
         catch (err) {
             const data = await err.json();
