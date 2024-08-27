@@ -82,8 +82,7 @@
         border: solid 1px red;
     }
     .cq-pro-img{
-        object-fit:scale-down;
-        position: relative;
+        position: static;
     }
     .cq-banner-img{
         display: none;
