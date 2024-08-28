@@ -41,22 +41,23 @@ function numToX (number){
     return number
 }
     return (
-        <div className="cm-container">
+        <div className="ac-container">
             {courseData && courseData.map((course, index) => (
 
-                <div className='cm-card'
+                <div className='ac-card'
                     title={`${course.name}`}
                     // !might have to put forward slash on this
                     onClick={() => navigate(`/courses/${course.id}`)}
                     key={index}>
-                    <div className="album-data-container">
-                        <p className='data-container-item bottom-item'>{course.origin_city}</p>
-                        <p className='data-container-item bottom-item'>{course.state}</p>
-                        <p className='data-container-item'>{`Resources${numToX(course.resource_access)}`}</p>
-                        <p className='data-container-item bottom-item'>Road Curves{numToX(course.curved_roads)}</p>
-                        <p className='data-container-item bottom-item'>Difficulty{numToX(course.difficulty)}</p>
-                        <p className='data-container-item'>GAS{numToX(course.gas)}</p>
-                        <p className='data-container-item bottom-item'>ID {course.id}</p>
+                    <div className="">
+                    <p className='ac-card-name'>{course.name}</p>
+                        <p className='ac-card-location'>{course.origin_city}, {course.state}</p>
+                        <p className=''>{}</p>
+                        <p className=''>{`Resources:${numToX(course.resource_access)}`}</p>
+                        <p className=''>Road Curves{numToX(course.curved_roads)}</p>
+                        <p className=''>Difficulty{numToX(course.difficulty)}</p>
+                        <p className=''>GAS{numToX(course.gas)}</p>
+                        <p className=''>ID {course.id}</p>
                     </div>
                 </div>
             ))}
