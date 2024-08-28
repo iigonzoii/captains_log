@@ -1,23 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./CC.css";
 import { useNavigate } from "react-router-dom";
 import { createCourse } from "../../redux/courseReducer";
+import "./CC.css";
 
-// todo check to see if logged in
-//     * set variable using session object for if null comparison
-
-//todo show a form
-//* render an html form
-
-
-//todo check to make sure required fields are passed into form by user
-//* create an error object using state
-//todo store that form input data into a variable
-//* useState to collect the valueform data
-//todo call the createCourse thunk and pass it in the formdata
-//todo navigate to captainsquarters
-//! I dont understand what flask forms is for when i have to create an html form anyways. I also dont know if im supposed to be referring to the model variable names or the flask form variable names
 
 function CreateCourse() {
     const dispatch = useDispatch();
@@ -91,10 +77,9 @@ function CreateCourse() {
         return <p>Log In to Chart a Course</p>;
     }
     return (
-        <>
+        <div className="cc-container">
             <h1>Chart Your Course</h1>
-            <section className="form-container">
-                <form onSubmit={handleSubmit}>
+                <form className="cc-form-container" onSubmit={handleSubmit}>
                     <input
                         value={highlightImg}
                         onChange={e => setHighlightImg(e.target.value)}
@@ -202,8 +187,7 @@ function CreateCourse() {
                         </button>
                     </div>
                 </form>
-            </section>
-        </>
+        </div>
     );
 }
 
