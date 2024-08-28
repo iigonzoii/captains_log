@@ -1,0 +1,19 @@
+.cc-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    align-content: center;
+    border: solid 1px yellow;
+    max-width: 1000px;
+    margin: auto;
+}
+.cc-form-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border: solid 1px red;
+    /* width: 150%; */
+    align-items: center;
+}

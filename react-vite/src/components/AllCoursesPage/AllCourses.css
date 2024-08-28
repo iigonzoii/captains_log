@@ -1,0 +1,54 @@
+.ac-container{
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-gap: 20px;
+    margin: 0 auto;
+    justify-items: center;
+    margin-top: 50px;
+}
+
+.ac-card {
+    height: 350px;
+    width: 350px;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/oldnotebook.png?alt=media&token=7d3c7c1a-7210-403a-a06c-533fb74a1747");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(10, 10, 10);
+    font-size: larger;
+}
+.ac-card-name{
+    font-size: x-large;
+}
+.ac-card-location{
+    text-align: center;
+    position: relative;
+    top:-15px
+}
+.ac-card-curves{
+    position: relative;
+    top: -20px
+}
+.ac-card-difficulty{
+    position: relative;
+    top: -13px
+}
+.ac-card-gas{
+    position: relative;
+    top: 5px
+}
+
+@media (max-width: 700px) {
+
+    .ac-container{
+        max-width: 900px;
+        display: grid;
+        grid-template-columns: 1fr ;
+        grid-gap: 20px;
+        margin: 0 auto;
+        justify-items: center;
+    }
+
+}
