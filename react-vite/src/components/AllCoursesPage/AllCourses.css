@@ -10,14 +10,15 @@
 .cm-card {
     height: 300px;
     width: 300px;
-    border: solid yellow 1px;
-    object-fit:contain;
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/route_log.png?alt=media&token=fdb9ac91-8503-42be-ab1e-b262d910963b");
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/oldnotebook.png?alt=media&token=7d3c7c1a-7210-403a-a06c-533fb74a1747");
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: rgb(10, 10, 10);
+    font-family: "Just Another Hand", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
 

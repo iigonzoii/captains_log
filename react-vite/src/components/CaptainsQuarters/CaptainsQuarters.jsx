@@ -15,7 +15,7 @@ function CaptainsQuarters() {
     useEffect(() => {
         if(user)
         dispatch(fetchCurrUserCourses())
-    }, [dispatch]);
+    }, [dispatch, user]);
     if (!user) {
         return <p>Log In to enter Captains Quarters</p>;
     }

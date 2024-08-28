@@ -24,12 +24,12 @@
     height: 150px;
     width: 150px;
     object-fit: contain;
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/route_log.png?alt=media&token=fdb9ac91-8503-42be-ab1e-b262d910963b");
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/oldnotebook.png?alt=media&token=7d3c7c1a-7210-403a-a06c-533fb74a1747");
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: lightgray;
+    color: rgb(6, 6, 6);
     margin: 5px;
 }
 
@@ -63,10 +63,10 @@
 
 .cq-update-button {
     background-color: transparent;
-    color: lightgray;
+    color: black;
     align-self: flex-start;
     border: none;
-    margin-right: 2pc;
+    margin-right: 1pc;
     box-shadow: 5px 5px 5px black;
 }
 .cq-card-buttons {
@@ -95,6 +95,10 @@
     .cq-transport{
         align-content: center;
         position: static;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
 
+    /* justify-content: space-between; */
     }
 }
