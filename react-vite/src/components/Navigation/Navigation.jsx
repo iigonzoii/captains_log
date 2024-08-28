@@ -8,16 +8,21 @@ function Navigation() {
   return (
     <nav>
       <div>
-        <NavLink to="/home" className="white">Captains Quarters</NavLink>
+        <NavLink to="/courses" className="nav-color-size">Courses</NavLink>
       </div>
+      <div className="nav-right-side">
       <div>
-      <NavLink to="/courses/new" className="white">Create a Course</NavLink>
+        <NavLink to="/courses/new" className="nav-color-size">Create a Course</NavLink>
       </div>
+
       <div>
-        <NavLink to="/courses" className="white">Courses</NavLink>
+        <NavLink to="/home" className="nav-color-size">Captains Quarters</NavLink>
       </div>
+
+
       <div>
         <ProfileButton />
+      </div>
       </div>
     </nav>
   );

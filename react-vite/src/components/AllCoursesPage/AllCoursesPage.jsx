@@ -21,19 +21,19 @@ function AllCoursesPage() {
 function numToX (number){
     switch(number){
         case 1:
-            number = " x"
+            number = " X"
             break;
         case 2:
-            number = " x x"
+            number = " X X"
             break;
         case 3:
-            number = " x x x"
+            number = " X X X"
             break;
         case 4:
-            number = " x x x x"
+            number = " X X X X"
             break;
         case 5:
-            number = " x x x x x"
+            number = " X X X X X"
             break;
         default:
             console.log("switchCase Broke")
@@ -49,14 +49,13 @@ function numToX (number){
                     // !might have to put forward slash on this
                     onClick={() => navigate(`/courses/${course.id}`)}
                     key={index}>
-                    <div className="">
+                    <div>
                     <p className='ac-card-name'>{course.name}</p>
                         <p className='ac-card-location'>{course.origin_city}, {course.state}</p>
-                        <p className=''>{}</p>
+                        <p className='ac-card-curves'>{`Road Curves:${numToX(course.curved_roads)}`}</p>
+                        <p className='ac-card-difficulty'>Difficulty:{numToX(course.difficulty)}</p>
                         <p className=''>{`Resources:${numToX(course.resource_access)}`}</p>
-                        <p className=''>Road Curves{numToX(course.curved_roads)}</p>
-                        <p className=''>Difficulty{numToX(course.difficulty)}</p>
-                        <p className=''>GAS{numToX(course.gas)}</p>
+                        <p className='ac-card-gas'>GAS:{numToX(course.gas)}</p>
                         <p className=''>ID {course.id}</p>
                     </div>
                 </div>

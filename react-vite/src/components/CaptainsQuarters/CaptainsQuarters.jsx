@@ -37,8 +37,7 @@ function CaptainsQuarters() {
                         <div className='cq-card'
                             title={`${course.name}`}
                             key={index}>
-                            <p>courseId - {course.id}</p>
-                            <p>ownerId - {course.owner_id}</p>
+                            <p className="cq-card-name">{course.name}</p>
                             <span className="cq-card-buttons">
                                 <Link to={`/courses/${course.id}/edit`}><button className="cq-update-button">Update</button></Link>
                                 <OpenModalButton
