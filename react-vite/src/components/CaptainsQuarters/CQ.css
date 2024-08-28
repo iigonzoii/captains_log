@@ -1,12 +1,111 @@
-.cq-card{
-    height: 150px;
-    width: 150px;
-    border: solid yellow 1px;
-    object-fit:contain;
-    background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/route_log.png?alt=media&token=fdb9ac91-8503-42be-ab1e-b262d910963b");
+.cq-container {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 60% 25% 25%;
+    grid-template-areas:
+        "banner banner banner banner"
+        "course course transport transport"
+        "course course transport transport";
+        margin: 0 auto;
+        color: white;
+}
+.cq-banner-area{
+    grid-area: banner;
+}
+.cq-card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-area: course;
+    justify-content: space-evenly;
+}
+.cq-card {
+    height: 225px;
+    width: 225px;
+    object-fit: contain;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/captains-log-13590.appspot.com/o/oldnotebook.png?alt=media&token=7d3c7c1a-7210-403a-a06c-533fb74a1747");
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgb(10, 10, 10);
+    color: rgb(6, 6, 6);
+    margin: 5px;
+    font-size: larger;
+
+}
+.cq-card-name{
+    position: relative;
+    font-weight: 900;
+    top:-5px
+}
+
+.cq-banner-img{
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+
+}
+.cq-pro-img{
+    height: 250px;
+    width: 250px;
+    object-fit:contain;
+    border-radius: 120px;
+    position: relative;
+    top: -100px;
+    left: 60px;
+}
+.cq-transport{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    grid-area: transport;
+    align-content: flex-end;
+    justify-content: space-between;
+    position: relative;
+    top:-100px
+}
+
+.cq-update-button {
+    background-color: transparent;
+    color: black;
+    align-self: flex-start;
+    border: none;
+    margin-right: 2pc;
+    box-shadow: 5px 5px 5px black;
+}
+.cq-card-buttons {
+    position: relative;
+    display: flex;
+    top: 127px;
+}
+
+
+@media (max-width: 855px) {
+    .cq-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        align-items: center;
+        color: lightgray;
+        border: solid 1px red;
+    }
+    .cq-pro-img{
+        position: static;
+    }
+    .cq-banner-img{
+        display: none;
+    }
+    .cq-transport{
+        align-content: center;
+        position: static;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+    /* justify-content: space-between; */
+    }
 }

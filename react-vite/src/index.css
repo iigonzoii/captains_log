@@ -4,11 +4,14 @@
 /* Document
    ========================================================================== */
    /** our sitewide */
+
    button {
     cursor: pointer;
   }
   html {
-    background-color: rgba(42, 38, 38, 0.862);
+    background-color: rgba(18, 16, 28, 0.965);
+    font-family: "Just Another Hand", cursive;
+
   }
   /* p{
     color: lightgrey;
