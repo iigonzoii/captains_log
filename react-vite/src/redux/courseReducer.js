@@ -59,6 +59,7 @@ export const fetchCourses = () => async (dispatch) => {
 export const fetchCourse = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}`)
     const course = await response.json()
+    console.log("COURSETHUNK",course)
     dispatch(loadCourse(course))
     return course
 }
@@ -168,8 +169,9 @@ const courseReducer = (state = initialState, action) => {
             const newState = { ...state };
             const updatedCourse = {
                 ...action.course,
-                UserCourses: action.course.UserCourses
+                // UserCourses: action.course.UserCourses
             };
+            console.log("ACTION",action)
             newState[action.course.Course.id] = updatedCourse;
             return newState;
         }
