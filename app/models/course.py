@@ -49,6 +49,7 @@ class Course(db.Model):
             'state': self.state,
             'log_entry': self.log_entry,
             'country': self.country,
+            'reviews': [review.to_dict() for review in self.reviews],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
