@@ -119,7 +119,7 @@ def delete_course(course_id):
 
 #*-------Review route--------
 #* Get all reviews by course id
-@course_routes.route('/<int:course_id>/reviews/')
+@course_routes.route('/<int:course_id>/reviews')
 def course_reviews(course_id):
     """
     Get all reviews for an course
@@ -131,7 +131,7 @@ def course_reviews(course_id):
 
 #*------ Review route---------
 #* Create a review by course id
-@course_routes.route('/<int:course_id>/reviews/', methods=['POST'])
+@course_routes.route('/<int:course_id>/reviews', methods=['POST'])
 # @login_required
 def new_review(course_id):
     """
