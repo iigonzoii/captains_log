@@ -1,8 +1,9 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchCourse } from "../../redux/courseReducer"
 import "./CD.css"
+import { fetchReviewsByCourse } from "../../redux/review"
 ///// todo fetch course
 ///// * use params to grab id and effect with thunk
 
@@ -20,21 +21,31 @@ import "./CD.css"
 function CourseDetails() {
     const dispatch = useDispatch()
     const { course_id } = useParams()
+    const [isLoaded, setIsLoaded] = useState(false)
     console.log("ID",course_id)
     const course = useSelector((state) => state.course.courseDetail)
     console.log("COURSEBYID", course)
     // const user = useSelector((state) => state.session.user)
+
     useEffect(() => {
-        //! will probably need to watch experience to rerender after someone messes with it
-        dispatch(fetchCourse(course_id))
-        //! also will probably need to watch courseId if its buggy
-    }, [dispatch, course_id])
-    return (
+        //?shouldnt i be watching reviews some how? or is watching dispatch doing that?
+        dispatch(fetchReviewsByCourse(+course_id))
+        .then(() => dispatch(fetchCourse(+course_id)))
+        .then(() => setIsLoaded(true));
+    }, [dispatch, course_id]);
+    // useEffect(() => {
+    //     //! will probably need to watch experience to rerender after someone messes with it
+    //     dispatch(fetchCourse(course_id))
+    //     //! also will probably need to watch courseId if its buggy
+    // }, [dispatch, course_id])
+
+
+    return isLoaded && (
         <div className="cd-container">
             <div>{course.name}</div>
-            <textarea>{course.log_entry}</textarea>
-            <textarea>Thoughts</textarea>
-            <textarea>points of interest</textarea>
+            <div>{course.log_entry}</div>
+            <div>Thoughts</div>
+            <div>{course.poi}</div>
             {/* below images div will be an array at some point being mapped over */}
             <div className="cd-img-container">
                 <img className="cd-img" src={course.img_1} alt="image of trip"/>
