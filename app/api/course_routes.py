@@ -132,7 +132,7 @@ def course_reviews(course_id):
 #*------ Review route---------
 #* Create a review by course id
 @course_routes.route('/<int:course_id>/reviews/', methods=['POST'])
-@login_required
+# @login_required
 def new_review(course_id):
     """
     Creates a review for a course
