@@ -16,7 +16,7 @@
   width: 120px;
   height: 80px;
   z-index: 1;
-  color: rgb(255, 253, 253);
+  color: rgb(135, 129, 129);
   align-items: center;
   overflow-x: auto;
 }
@@ -55,7 +55,7 @@ nav{
   /* justify-content: space-between; */
 }
 .nav-color-size{
-  color: white;
+  color: rgb(135, 129, 129);
   font-size: x-large;
   text-decoration: none;
   margin: 0px 15px ;
@@ -67,7 +67,7 @@ nav{
 
 @media (max-width:545px){
   .nav-color-size{
-    color: white;
+    color: rgb(135, 129, 129);
     font-size:small;
     text-decoration: none;
     margin: 0px 15px ;

@@ -6,7 +6,7 @@ from app.forms import ReviewEditForm
 
 review_routes = Blueprint('reviews', __name__)
 
-# Get all reviews by current user
+#* Get all reviews by current user
 @review_routes.route('/current')
 @login_required
 def user_reviews():
@@ -19,7 +19,7 @@ def user_reviews():
     return {'reviews': [review.to_dict() for review in reviews]}, 200
 
 
-# Update review
+#* Update review
 @review_routes.route('/<int:review_id>', methods=['PUT'])
 @login_required
 def update_review(review_id):
@@ -44,7 +44,7 @@ def update_review(review_id):
     return form.errors, 401
 
 
-# Delete review
+#* Delete review
 @review_routes.route('/<int:review_id>', methods=['DELETE'])
 @login_required
 def delete_review(review_id):

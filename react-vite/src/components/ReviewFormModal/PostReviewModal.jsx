@@ -40,7 +40,7 @@ function PostReviewModal({ course_id }) {
     return (
         <div className="review-form-parent">
             <h1 className="review-form-heading">Share your review</h1>
-            {errors.server && <p>{errors.server}</p>}
+            {errors.server && <p>{errors.server}</p>}›
             <form className="review-form-body" onSubmit={handleSubmit}>
                 <textarea
                     name="review"

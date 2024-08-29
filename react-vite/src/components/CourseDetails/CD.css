@@ -4,7 +4,7 @@
     flex-wrap: wrap;
     margin: 0 auto;
     align-items: center;
-    color: lightgray;
+    color: rgb(135, 129, 129);
     border: solid 1px red;
 }
 .cd-img-container{
@@ -14,15 +14,15 @@
 .cd-img-container>img {
     height: auto;
     width: 200px;
-    /* object-fit: contain; */
+/* object-fit: contain; */
     z-index: 999;
     cursor: pointer;
     transition-property: all;
     transition-duration: 0.3s;
     transition-timing-function: ease;
 }
-/* .cd-img{ */
-    /* height: auto;
+/* .cd-img{
+     height: auto;
     width: 200px;
 
     z-index: 999;
@@ -44,7 +44,7 @@
         flex-wrap: wrap;
         margin: 0 auto;
         align-items: center;
-        color: lightgray;
+        color: rgb(135, 129, 129);
         border: solid 1px red;
     }
 

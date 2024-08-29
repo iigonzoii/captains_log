@@ -135,7 +135,7 @@ def course_reviews(course_id):
 @login_required
 def new_review(course_id):
     """
-    Creates a review for an course
+    Creates a review for a course
     """
     course = Course.query.get(course_id)
     if not course:
