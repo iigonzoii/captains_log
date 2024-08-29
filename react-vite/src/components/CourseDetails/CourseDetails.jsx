@@ -19,12 +19,14 @@ import "./CD.css"
 function CourseDetails(){
     const dispatch = useDispatch()
     const {courseId} = useParams
-    const course = useSelector((state) => state.course)
+    const course = useSelector((state) => state.course.courseDetail)
+    // const user = useSelector((state) => state.session.user)
     console.log("COURSEBYID",course)
     useEffect(()=>{
 //! will probably need to watch experience to rerender after someone messes with it
 dispatch(fetchCourse(courseId))
-    },[dispatch])
+//! also will probably need to watch courseId if its buggy
+    },[dispatch, courseId])
     return (
         <div className="cd-container">
         <div>Route Name</div>

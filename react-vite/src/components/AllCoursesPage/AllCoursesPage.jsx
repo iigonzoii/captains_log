@@ -36,7 +36,7 @@ function numToX (number){
             number = " X X X X X"
             break;
         default:
-            console.log("switchCase")
+            number
     }
     return number
 }
