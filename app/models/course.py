@@ -9,6 +9,7 @@ class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     highlight_img = db.Column(db.String(250))
+    poi = db.Column(db.String(250))
     img_1=db.Column(db.String(250))
     img_2=db.Column(db.String(250))
     img_3=db.Column(db.String(250))
@@ -26,12 +27,14 @@ class Course(db.Model):
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
+    reviews = db.relationship('Review', back_populates='course', cascade="all, delete-orphan")
 
     def to_dict(self):
         return {
             'id': self.id,
             'owner_id': self.owner_id,
             'highlight_img': self.highlight_img,
+            'poi': self.poi,
             'img_1': self.img_1,
             'img_2': self.img_2,
             'img_3': self.img_3,
@@ -46,6 +49,7 @@ class Course(db.Model):
             'state': self.state,
             'log_entry': self.log_entry,
             'country': self.country,
+            'reviews': [review.to_dict() for review in self.reviews],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

@@ -1,10 +1,10 @@
+    //*------ACTION TYPES---------
 const LOAD_COURSES = "course/loadCourses"
 const LOAD_COURSE = "course/loadCourse"
 const UPDATE_COURSE = "course/updateCourse"
 const CREATE_COURSE = "course/createCourse"
 const USER_COURSES =    "course/loadUserCourses"
 const DELETE_COURSE = "course/deleteCourse"
-
 
     //*-------ACTION CREATORS---------
 export const loadCourses = (courses) => {
@@ -59,6 +59,7 @@ export const fetchCourses = () => async (dispatch) => {
 export const fetchCourse = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}`)
     const course = await response.json()
+    console.log("LOADCOURSETHUNK",course)
     dispatch(loadCourse(course))
     return course
 }
@@ -165,15 +166,16 @@ const courseReducer = (state = initialState, action) => {
             return newState
         }
         case LOAD_COURSE:{
-            const newState = { ...state };
-            const updatedCourse = {
-                ...action.course,
-                UserCourses: action.course.UserCourses
-            };
-            newState[action.course.Course.id] = updatedCourse;
-            return newState;
+            console.log("ACTION",action)
+            return { ...state, courseDetail: {...action.course} };
+            // const newState = { ...state };
+            // const updatedCourse = {
+            //     ...action.course,
+            //     // UserCourses: action.course.UserCourses
+            // };
+            // newState[action.course.Course.id] = updatedCourse;
         }
-            // return { ...state, courseDetail: {...action.course}};
+        // return { ...state, courseDetail: {...action.course}};
             case UPDATE_COURSE: {
                 // console.log(action.payload)
                 return {

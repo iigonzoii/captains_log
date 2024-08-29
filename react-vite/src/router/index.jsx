@@ -7,6 +7,7 @@ import AllCoursesPage from '../components/AllCoursesPage/AllCoursesPage';
 import CaptainsQuarters from '../components/CaptainsQuarters';
 import CreateCourse from '../components/CreateCourse';
 import UpdateCourse from '../components/UpdateCourse/UpdateCourse';
+import CourseDetails from '../components/CourseDetails';
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path:"/courses/:course_id/edit",
         element: <UpdateCourse />
+      },
+      {
+        path:"/courses/:course_id",
+        element: <CourseDetails />
       }
     ],
   },
