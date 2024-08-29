@@ -76,7 +76,7 @@ function CourseDetails() {
                 )) : <p>No reviews here</p>}
 
             </ul>
-            {sessionUser && course[course_id].Course.owner_id !== sessionUser.id && (
+            {sessionUser && course.owner_id !== sessionUser.id && (
                 <div className="ad-review-button">
                     {(
                         <ReviewButton reviews={reviews} course_id={course_id} />
