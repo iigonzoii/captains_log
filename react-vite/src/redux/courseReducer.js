@@ -166,14 +166,14 @@ const courseReducer = (state = initialState, action) => {
             return newState
         }
         case LOAD_COURSE:{
+            console.log("ACTION",action)
+            return { ...state, courseDetail: {...action.course} };
             // const newState = { ...state };
             // const updatedCourse = {
             //     ...action.course,
             //     // UserCourses: action.course.UserCourses
             // };
-            console.log("ACTION",action)
             // newState[action.course.Course.id] = updatedCourse;
-            return { ...state, courseDetail: {...action.course} };
         }
         // return { ...state, courseDetail: {...action.course}};
             case UPDATE_COURSE: {

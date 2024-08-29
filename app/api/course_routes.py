@@ -22,7 +22,7 @@ def course_by_id(course_id):
     course_details = db.session.query(Course).filter(Course.id == course_id).first()
     if not course_details:
         return {'errors': {'message': 'Course not found'}}, 404
-    return {course_details.to_dict()}, 200
+    return course_details.to_dict(), 200
 
 #* Get all courses by User
 @course_routes.route('/current', methods=['GET'])
