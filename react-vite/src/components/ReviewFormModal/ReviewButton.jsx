@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import OpenModalButton from "../OpenModalButton";
 import PostReviewModal from "./PostReviewModal"
 
-function ReviewButton({ reviews, album_id }) {
+function ReviewButton({ reviews, course_id }) {
     const sessionUser = useSelector((state) => state.session.user);
     let course = useSelector(state => state.course);
     console.log("Flag:", course)
@@ -14,7 +14,7 @@ function ReviewButton({ reviews, album_id }) {
             {sessionUser && !userAlreadyReviewed && (
                 <OpenModalButton
                     buttonText="Post a Review"
-                    modalComponent={<PostReviewModal albumId={album_id} />}
+                    modalComponent={<PostReviewModal course_id={course_id} />}
                 />
             )}
         </div>

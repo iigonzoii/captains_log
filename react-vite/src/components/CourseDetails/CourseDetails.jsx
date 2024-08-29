@@ -32,6 +32,7 @@ function CourseDetails() {
     const sessionUser = useSelector((state) => state.session.user);
     let reviews = useSelector(state => state.review)
     reviews = Object.values(reviews)
+    console.log("REVIEWS",reviews)
 
 
     useEffect(() => {

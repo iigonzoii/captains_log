@@ -5,7 +5,7 @@ import { useModal } from '../../context/Modal';
 import "./ReviewForm.css"
 
 
-function PostReviewModal({ albumId }) {
+function PostReviewModal({ course_id }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
@@ -19,7 +19,7 @@ function PostReviewModal({ albumId }) {
         e.preventDefault();
 
         const serverResponse = await dispatch(
-            createReview(albumId, formData)
+            createReview(course_id, formData)
         );
 
         if (serverResponse) {
