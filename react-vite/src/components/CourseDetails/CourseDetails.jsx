@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchCourse } from "../../redux/courseReducer"
 import "./CD.css"
-// todo fetch course
-//* use params to grab id and effect with thunk
+///// todo fetch course
+///// * use params to grab id and effect with thunk
+
 // todo fetch experiences
 //* make experiences model
 //* make experiences seeders
@@ -30,11 +31,20 @@ function CourseDetails() {
     }, [dispatch, course_id])
     return (
         <div className="cd-container">
-            <div>Route Name</div>
-            <div>Log Entry</div>
-            <div>Experiences</div>
-            <div>points of interest</div>
-            <div>images of trip</div>
+            <div>{course.name}</div>
+            <textarea>{course.log_entry}</textarea>
+            <textarea>Experiences</textarea>
+            <textarea>points of interest</textarea>
+            {/* below images div will be an array at some point being mapped over */}
+            <div className="cd-img-container">
+                <img className="cd-img" src={course.img_1} alt="image of trip"/>
+                <img className="cd-img" src={course.img_2} alt="image of trip"/>
+                <img className="cd-img" src={course.img_3} alt="image of trip"/>
+                <img className="cd-img" src={course.img_4} alt="image of trip"/>
+                {/* {course && course.map((course, index) =>
+                // <img src={course.img} />
+                )} */}
+            </div>
         </div>
     )
 }
