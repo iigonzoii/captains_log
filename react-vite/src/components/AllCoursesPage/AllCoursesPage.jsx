@@ -11,14 +11,8 @@ function AllCoursesPage() {
     let courseData = useSelector((state) => state.course);
     const dispatch = useDispatch();
     courseData= Object.values(courseData);
+    function numToX (number){
 
-    useEffect(() => {
-        dispatch(fetchCourses());
-    }, [dispatch]);
-
-
-// todo function takes in a number and returns x's
-function numToX (number){
     switch(number){
         case 1:
             number = " X"
@@ -40,6 +34,10 @@ function numToX (number){
     }
     return number
 }
+
+    useEffect(() => {
+        dispatch(fetchCourses());
+    }, [dispatch]);
     return (
         <div className="ac-container">
             {courseData && courseData.map((course, index) => (
@@ -47,7 +45,7 @@ function numToX (number){
                 <div className='ac-card'
                     title={`${course.name}`}
                     // !might have to put forward slash on this
-                    onClick={() => navigate(`/courses/${course.id}`)}
+                    onClick={() => navigate(`/courses/${course.id}/`)}
                     key={index}>
                     <div>
                     <p className='ac-card-name'>{course.name}</p>

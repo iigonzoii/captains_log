@@ -1,10 +1,10 @@
+    //*------ACTION TYPES---------
 const LOAD_COURSES = "course/loadCourses"
 const LOAD_COURSE = "course/loadCourse"
 const UPDATE_COURSE = "course/updateCourse"
 const CREATE_COURSE = "course/createCourse"
 const USER_COURSES =    "course/loadUserCourses"
 const DELETE_COURSE = "course/deleteCourse"
-
 
     //*-------ACTION CREATORS---------
 export const loadCourses = (courses) => {
@@ -166,14 +166,14 @@ const courseReducer = (state = initialState, action) => {
             return newState
         }
         case LOAD_COURSE:{
+            console.log("ACTION",action)
+            return { ...state, courseDetail: {...action.course} };
             // const newState = { ...state };
             // const updatedCourse = {
             //     ...action.course,
             //     // UserCourses: action.course.UserCourses
             // };
-            console.log("ACTION",action)
             // newState[action.course.Course.id] = updatedCourse;
-            return { ...state, courseDetail: {...action.course} };
         }
         // return { ...state, courseDetail: {...action.course}};
             case UPDATE_COURSE: {
