@@ -1,0 +1,19 @@
+
+
+
+
+
+
+
+@media (max-width: 855px) {
+    .cd-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        align-items: center;
+        color: lightgray;
+        border: solid 1px red;
+    }
+
+}

@@ -18,6 +18,7 @@
     align-items: center;
     color: rgb(10, 10, 10);
     font-size: larger;
+    cursor: pointer;
 }
 .ac-card-name{
     font-size: x-large;
