@@ -33,7 +33,7 @@ function CourseDetails() {
         <div className="cd-container">
             <div>{course.name}</div>
             <textarea>{course.log_entry}</textarea>
-            <textarea>Experiences</textarea>
+            <textarea>Thoughts</textarea>
             <textarea>points of interest</textarea>
             {/* below images div will be an array at some point being mapped over */}
             <div className="cd-img-container">

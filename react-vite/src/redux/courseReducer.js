@@ -1,10 +1,10 @@
+    //*------ACTION TYPES---------
 const LOAD_COURSES = "course/loadCourses"
 const LOAD_COURSE = "course/loadCourse"
 const UPDATE_COURSE = "course/updateCourse"
 const CREATE_COURSE = "course/createCourse"
 const USER_COURSES =    "course/loadUserCourses"
 const DELETE_COURSE = "course/deleteCourse"
-
 
     //*-------ACTION CREATORS---------
 export const loadCourses = (courses) => {

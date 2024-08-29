@@ -35,7 +35,7 @@ function UpdateCourse() {
 
     useEffect(() => {
         if (user) {
-          dispatch(fetchCurrUserCourses()); // Fetch the user's albums on mount
+          dispatch(fetchCurrUserCourses()); // Fetch the user's courses on mount
         }
       }, [dispatch, user]);
 
