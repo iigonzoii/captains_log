@@ -20,7 +20,7 @@ def user_reviews():
 
 
 #* Update review
-@review_routes.route('/<int:review_id>', methods=['PUT'])
+@review_routes.route('/<int:review_id>/', methods=['PUT'])
 @login_required
 def update_review(review_id):
     """
