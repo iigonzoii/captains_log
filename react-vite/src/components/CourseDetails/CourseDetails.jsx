@@ -52,10 +52,10 @@ function CourseDetails() {
             <div className="cd-name">{course.name}</div>
             <textarea disabled className="cd-log">{course.log_entry}</textarea>
 
-            <ul className="reviews-list cd-reviews">
+            <div className="reviews-list cd-reviews">
 
                 {reviews.length > 0 ? reviews && reviews.map((review, index) => (
-                  <li key={index}>
+                  <div key={index}>
                         {`UserId-${review.user_id}-${review.review}`}
                         {sessionUser && review.user_id === sessionUser.id && (
                             <div className="review-modify-buttons">
@@ -73,7 +73,7 @@ function CourseDetails() {
                                 </div>
                             </div>
                         )}
-                    </li>
+                    </div>
                 )) : <p>No reviews here</p>}
 
             {sessionUser && course.owner_id !== sessionUser.id && (
@@ -82,7 +82,7 @@ function CourseDetails() {
                         <ReviewButton reviews={reviews} course_id={course_id} />
                     )}
                 </div>
-            )}</ul>
+            )}</div>
             <div className="cd-poi">{course.poi}</div>
             {/* below images div will be an array at some point being mapped over */}
             <div className="cd-img-container">
