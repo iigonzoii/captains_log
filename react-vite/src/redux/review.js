@@ -53,7 +53,7 @@ export const fetchReviewsByCourse = (courseId) => async (dispatch) => {
 
 //* Create a review by Course ID
 export const createReview = (course_id, review) => async (dispatch) => {
-    const response = await fetch(`/api/courses/${course_id}/reviews/`, {
+    const response = await fetch(`/api/courses/${course_id}/reviews`, {
         method: "POST",
         body: JSON.stringify(review),
         headers: { "Content-Type": "application/json" }
