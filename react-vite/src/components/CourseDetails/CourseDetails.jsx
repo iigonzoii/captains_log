@@ -76,14 +76,13 @@ function CourseDetails() {
                     </li>
                 )) : <p>No reviews here</p>}
 
-            </ul>
             {sessionUser && course.owner_id !== sessionUser.id && (
-                <div className="ad-review-button">
+                <div className=" ad-review-button">
                     {(
                         <ReviewButton reviews={reviews} course_id={course_id} />
                     )}
                 </div>
-            )}
+            )}</ul>
             <div className="cd-poi">{course.poi}</div>
             {/* below images div will be an array at some point being mapped over */}
             <div className="cd-img-container">

@@ -1,0 +1,24 @@
+.review-edit-button button{
+    background-color:rgb(135, 129, 129);
+}
+
+.review-edit-button button:hover {
+    background-color: green;
+}
+.review-delete-button button{
+    background-color:rgb(135, 129, 129);
+}
+.review-delete-button button:hover {
+    background-color: red;
+}
+.ad-review-button{
+    display: flex;
+    justify-content: flex-start;
+}
+.ad-review-button button{
+    background-color:rgb(135, 129, 129);
+}
+.ad-review-button button:hover{
+    background-color: green;
+
+}
