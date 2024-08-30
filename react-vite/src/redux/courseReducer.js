@@ -57,7 +57,7 @@ export const fetchCourses = () => async (dispatch) => {
 
 //* Get course by ID
 export const fetchCourse = (courseId) => async (dispatch) => {
-    const response = await fetch(`/api/courses/${courseId}`)
+    const response = await fetch(`/api/courses/${courseId}/`)
     const course = await response.json()
     console.log("LOADCOURSETHUNK",course)
     dispatch(loadCourse(course))
