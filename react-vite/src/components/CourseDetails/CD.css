@@ -67,11 +67,11 @@
     height: 200px;
     width: 200px;
     object-fit: cover;
-    z-index: 999;
+    /* z-index: 999;
     cursor: pointer;
     transition-property: all;
     transition-duration: 0.3s;
-    transition-timing-function: ease;
+    transition-timing-function: ease; */
     margin: 10px auto
 }
 
@@ -92,11 +92,11 @@ textarea {
     justify-self: flex-end;
 }
 
-.cd-img-container>img:hover {
+/* .cd-img-container>img:hover {
     transform: scale(3);
     top: -100px;
     left:200px
-}
+} */
 
 
 @media (max-width: 855px) {
