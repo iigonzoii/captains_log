@@ -9,11 +9,15 @@
         "images images images images";
     margin: 0 auto;
     color: rgb(135, 129, 129);
-    border: solid 1px green;
+    /* border: solid 1px green; */
     gap: 10px 10px;
     padding: 10px
 }
-
+.cd-name{
+    position:relative;
+    bottom:502px;
+    left:400px;
+}
 .cd-log {
     grid-area: log;
     /* border: solid 1px purple; */

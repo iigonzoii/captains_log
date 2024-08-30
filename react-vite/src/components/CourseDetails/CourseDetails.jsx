@@ -49,7 +49,7 @@ function CourseDetails() {
 
     return isLoaded && (
         <div className="cd-container">
-            <div>{course.name}</div>
+            <div className="cd-name">{course.name}</div>
             <textarea disabled className="cd-log">{course.log_entry}</textarea>
 
             <ul className="reviews-list cd-reviews">
