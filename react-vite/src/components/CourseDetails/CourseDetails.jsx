@@ -52,7 +52,8 @@ function CourseDetails() {
             <div className="cd-name">{course.name}</div>
             <textarea disabled className="cd-log">{course.log_entry}</textarea>
 
-            <div className="reviews-list cd-reviews">
+
+            <div className="cd-reviews">
 
                 {reviews.length > 0 ? reviews && reviews.map((review, index) => (
                   <div key={index}>
@@ -77,7 +78,7 @@ function CourseDetails() {
                 )) : <p>No reviews here</p>}
 
             {sessionUser && course.owner_id !== sessionUser.id && (
-                <div className=" ad-review-button">
+                <div className="ad-review-button">
                     {(
                         <ReviewButton reviews={reviews} course_id={course_id} />
                     )}
