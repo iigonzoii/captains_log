@@ -50,11 +50,12 @@ function CourseDetails() {
     return isLoaded && (
         <div className="cd-container">
             <div>{course.name}</div>
-            <div className="cd-log">{course.log_entry}</div>
+            <textarea disabled className="cd-log">{course.log_entry}</textarea>
+
             <ul className="reviews-list cd-reviews">
 
                 {reviews.length > 0 ? reviews && reviews.map((review, index) => (
-                    <li key={index}>
+                  <li key={index}>
                         {`UserId-${review.user_id}-${review.review}`}
                         {sessionUser && review.user_id === sessionUser.id && (
                             <div className="review-modify-buttons">
