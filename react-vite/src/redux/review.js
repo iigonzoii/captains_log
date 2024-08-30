@@ -64,7 +64,7 @@ export const createReview = (course_id, review) => async (dispatch) => {
 // !might have to take this slash off
 //* Update a review by ID
 export const editReview = (reviewId, review) => async dispatch => {
-    const response = await fetch(`/api/reviews/${reviewId}/`, {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
         // csrfFetch
         method: 'PUT',
         body: JSON.stringify(review),
