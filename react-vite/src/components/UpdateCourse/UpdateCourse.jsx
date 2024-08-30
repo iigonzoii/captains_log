@@ -77,6 +77,7 @@ function UpdateCourse() {
         // !if issues may have to change the state variables that require numbers to empty () instead of empty string
 
         const payload = {
+            id: course_id,
             owner_id: user.id,
             name,
             highlight_img: highlightImg,
