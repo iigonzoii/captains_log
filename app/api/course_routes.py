@@ -17,7 +17,7 @@ def all_courses():
     return {"courses":courses_dict}, 200
 
 #* Get course by id
-@course_routes.route('/<int:course_id>', methods=['GET'])
+@course_routes.route('/<int:course_id>/', methods=['GET'])
 def course_by_id(course_id):
     course_details = db.session.query(Course).options(
         joinedload(Course.reviews).joinedload(Review.reviewer)
