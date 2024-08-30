@@ -48,7 +48,7 @@ export const removeCourse = (courseId) => ({
 
 //* Get all courses
 export const fetchCourses = () => async (dispatch) => {
-    const response = await fetch('/api/courses/');
+    const response = await fetch('/api/courses');
     const courses = await response.json();
     // console.log(courses)
     dispatch(loadCourses(courses.courses));
