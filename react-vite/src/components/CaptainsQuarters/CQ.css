@@ -8,7 +8,7 @@
         "course course transport transport"
         "course course transport transport";
         margin: 0 auto;
-        color: white;
+        color: rgb(135, 129, 129);
 }
 .cq-banner-area{
     grid-area: banner;
@@ -32,12 +32,11 @@
     color: rgb(6, 6, 6);
     margin: 5px;
     font-size: larger;
-
 }
 .cq-card-name{
     position: relative;
     font-weight: 900;
-    top:-5px
+    top:-5px;
 }
 
 .cq-banner-img{
@@ -90,7 +89,7 @@
         flex-wrap: wrap;
         margin: 0 auto;
         align-items: center;
-        color: lightgray;
+        color: rgb(135, 129, 129);
         border: solid 1px red;
     }
     .cq-pro-img{

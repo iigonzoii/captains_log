@@ -48,7 +48,7 @@ export const removeCourse = (courseId) => ({
 
 //* Get all courses
 export const fetchCourses = () => async (dispatch) => {
-    const response = await fetch('/api/courses');
+    const response = await fetch('/api/courses/');
     const courses = await response.json();
     // console.log(courses)
     dispatch(loadCourses(courses.courses));
@@ -57,7 +57,7 @@ export const fetchCourses = () => async (dispatch) => {
 
 //* Get course by ID
 export const fetchCourse = (courseId) => async (dispatch) => {
-    const response = await fetch(`/api/courses/${courseId}`)
+    const response = await fetch(`/api/courses/${courseId}/`)
     const course = await response.json()
     console.log("LOADCOURSETHUNK",course)
     dispatch(loadCourse(course))
