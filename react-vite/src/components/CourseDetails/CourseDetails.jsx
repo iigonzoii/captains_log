@@ -10,13 +10,12 @@ import DeleteReviewModal from "../ReviewFormModal/DeleteReviewModal"
 import OpenModalButton from "../OpenModalButton";
 ///// todo fetch course
 ///// * use params to grab id and effect with thunk
-
-// todo fetch experiences
-//* make experiences model
-//* make experiences seeders
-//* update course model to have poi as a string or text area
-// todo integrate modal for experiences
-//* import use modal button or make a seperate page like i did with the forms
+///// todo fetch experiences
+/////* make experiences model
+/////* make experiences seeders
+/////* update course model to have poi as a string or text area
+///// todo integrate modal for experiences
+/////* import use modal button or make a seperate page like i did with the forms
 // todo apply desktop view with grid template areas
 //* decide on row heights, gaps, for cols and rows
 //* decide on either setting route highlight image as background or banner
@@ -51,8 +50,8 @@ function CourseDetails() {
     return isLoaded && (
         <div className="cd-container">
             <div>{course.name}</div>
-            <div>{course.log_entry}</div>
-            <ul className="reviews-list">
+            <div className="cd-log">{course.log_entry}</div>
+            <ul className="reviews-list cd-reviews">
 
                 {reviews.length > 0 ? reviews && reviews.map((review, index) => (
                     <li key={index}>
@@ -84,7 +83,7 @@ function CourseDetails() {
                     )}
                 </div>
             )}
-            <div>{course.poi}</div>
+            <div className="cd-poi">{course.poi}</div>
             {/* below images div will be an array at some point being mapped over */}
             <div className="cd-img-container">
                 <img className="cd-img" src={course.img_1} alt="image of trip" />

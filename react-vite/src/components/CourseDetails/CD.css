@@ -1,26 +1,56 @@
 .cd-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+        "log log log log"
+        "reviews reviews poi poi"
+        "images images images images";
     margin: 0 auto;
-    align-items: center;
     color: rgb(135, 129, 129);
     border: solid 1px green;
+    gap: 10px 10px;
+    padding: 10px
 }
-.cd-img-container{
+
+.cd-log {
+    grid-area: log;
+    border: solid 1px purple;
+}
+
+.cd-reviews {
+    grid-area: reviews;
+    border: solid 1px blue;
+
+}
+
+.cd-poi {
+    grid-area: poi;
+    border: solid 1px blue;
+
+}
+
+.cd-img-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    grid-area: images;
+    border: solid 1px orange;
 }
+
 .cd-img-container>img {
     height: auto;
     width: 200px;
-/* object-fit: contain; */
+    object-fit: contain;
     z-index: 999;
     cursor: pointer;
     transition-property: all;
     transition-duration: 0.3s;
     transition-timing-function: ease;
+    margin: 0px auto
+
 }
+
 /* .cd-img{
      height: auto;
     width: 200px;
@@ -48,7 +78,7 @@
         border: solid 1px red;
     }
 
-    .cd-img-container{
+    .cd-img-container {
         display: flex;
         flex-direction: column;
     }
