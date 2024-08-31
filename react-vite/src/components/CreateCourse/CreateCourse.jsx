@@ -176,7 +176,7 @@ function CreateCourse() {
                         className="textarea-field"
                     />
                     <div className="button-group">
-                        <button type="submit" className="form-button">Submit
+                        <button type="submit" className="form-button submit-button">Submit
                         </button>
                         <button
                             type="button"
