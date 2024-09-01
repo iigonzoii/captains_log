@@ -48,6 +48,12 @@ nav{
   /* font-size: x-large; */
 
 }
+.nav-profile-button{
+  background-color: rgba(18, 16, 28, 0.965);
+  margin-right: 10px;
+  color: rgb(145, 140, 140);
+  border-radius: 20px;
+}
 .nav-right-side{
   display: flex;
   flex-wrap: nowrap;
