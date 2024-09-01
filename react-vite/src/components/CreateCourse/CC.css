@@ -4,16 +4,50 @@
     flex-wrap: wrap;
     /* align-items: center; */
     align-content: center;
-    border: solid 1px yellow;
+    text-align: center;
+    /* border: solid 1px yellow; */
     max-width: 1000px;
     margin: auto;
+    color: rgb(145, 140, 140);
 }
 .cc-form-container{
+    width: 400px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    border: solid 1px red;
-    /* width: 150%; */
-    align-items: center;
+
+}
+
+.cc-form-container * {
+    padding: 5px;
+    text-align: center;
+    background-color: rgba(18, 16, 28, 0.965);
+    border: solid 1px rgb(52, 51, 51);
+    margin: 2px 0px;
+    /* color: rgb(135, 129, 129); */
+    color: rgb(145, 140, 140);
+}
+.cc-form-container h2 {
+    border: none;
+    background-color: transparent;
+}
+.button-group{
+    background-color: transparent;
+    border: none;
+}
+.button-group button{
+    margin:0px 5px;
+    width:45%;
+}
+
+@media(max-width: 430px){
+
+    .cc-form-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: max-content;
+    }
 }
