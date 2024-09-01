@@ -40,7 +40,7 @@ function CreateCourse() {
             setErrors(newErrors);
             return;
         }
-        // !if issues may have to change the state variables that require numbers to empty () instead of empty string
+
         const payload = {
             owner_id: user.id,
             name,
@@ -84,25 +84,21 @@ function CreateCourse() {
                         value={highlightImg}
                         onChange={e => setHighlightImg(e.target.value)}
                         placeholder="Highlight Image"
-                        className="input-field"
                     />
                     <input
                         value={imgOne}
                         onChange={e => setImgOne(e.target.value)}
                         placeholder="Image One"
-                        className="input-field"
                     />
                     <input
                         value={imgTwo}
                         onChange={e => setImgTwo(e.target.value)}
                         placeholder="Image Two"
-                        className="input-field"
                     />
                     <input
                         value={imgThree}
                         onChange={e => setImgThree(e.target.value)}
                         placeholder="Image Three"
-                        className="input-field"
                     />
                     <input
                         value={imgFour}
@@ -173,10 +169,9 @@ function CreateCourse() {
                         value={logEntry}
                         onChange={e => setLogEntry(e.target.value)}
                         placeholder="Log your experience as you go!"
-                        className="textarea-field"
                     />
                     <div className="button-group">
-                        <button type="submit" className="form-button">Submit
+                        <button type="submit" className="form-button submit-button">Submit
                         </button>
                         <button
                             type="button"

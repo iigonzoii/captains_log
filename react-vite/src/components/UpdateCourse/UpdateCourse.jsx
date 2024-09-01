@@ -113,10 +113,9 @@ function UpdateCourse() {
         return <p>Log In to Chart a Course</p>;
     }
     return (
-        <>
+        <div className="uc-container">
             <h1>Chart Your Course</h1>
-            <section className="form-container">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="uc-form-container">
                     <input
                         value={highlightImg}
                         onChange={e => setHighlightImg(e.target.value)}
@@ -214,7 +213,7 @@ function UpdateCourse() {
                         className="textarea-field"
                     />
                     <div className="button-group">
-                        <button type="submit" className="form-button">Submit
+                        <button type="submit" className="form-button submit-button">Submit
                         </button>
                         <button
                             type="button"
@@ -225,8 +224,7 @@ function UpdateCourse() {
                         </button>
                     </div>
                 </form>
-            </section>
-        </>
+        </div>
     );
 }
 
