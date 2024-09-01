@@ -27,7 +27,7 @@ def course_by_id(course_id):
     return course_details.to_dict(), 200
 
 #* Get all courses by User
-@course_routes.route('/current', methods=['GET'])
+@course_routes.route('/current/', methods=['GET'])
 def courses_by_user():
     user_id = current_user.id
     courses = Course.query.filter_by(owner_id=user_id).all()
