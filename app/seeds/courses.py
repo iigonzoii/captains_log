@@ -25,6 +25,9 @@ def seed_courses():
     db.session.add(course_two)
     db.session.add(course_three)
     db.session.add(course_four)
+    db.session.add(course_five)
+    db.session.add(course_six)
+
 
     db.session.commit()
 
