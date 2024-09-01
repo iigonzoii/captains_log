@@ -2,8 +2,10 @@
     max-width: 1000px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 2% 1fr 1fr 1fr 1fr;
     grid-template-areas:
+        "name name name name"
+        "banner banner banner banner"
         "log log log log"
         "reviews reviews poi poi"
         "images images images images";
@@ -13,16 +15,29 @@
     gap: 10px 10px;
     padding: 10px
 }
+.cd-banner{
+    grid-area: banner;
+    width: 100%;
+    height: 100%;
+}
 
-/* .cd-name{
-    position:relative;
-    bottom:502px;
-    left:400px;
-} */
+.cd-name{
+    /* position:fixed; */
+grid-area: name;
+/* align-self: center; */
+justify-self: center;
+font-size: 30px;
+}
 .cd-log {
     grid-area: log;
-    /* border: solid 1px purple; */
-    overflow-y:auto
+    /* overflow-y:scroll; */
+    padding: 12px 20px;
+    width: 100%;
+    color: rgb(135, 129, 129);
+    background-color: rgba(18, 16, 28, 0.965);
+    resize: none;
+    box-sizing: border-box;
+    border: none;
 }
 
 .cd-reviews {
@@ -99,7 +114,7 @@ textarea {
 } */
 
 
-@media (max-width: 855px) {
+@media (max-width: 850px) {
     .cd-container {
         display: flex;
         flex-direction: column;
@@ -107,8 +122,14 @@ textarea {
         margin: 0 auto;
         align-items: center;
         color: rgb(135, 129, 129);
-        border: solid 1px red;
+        /* border: solid 1px red; */
     }
+    /* .cd-banner{
+        grid-area: banner;
+        width: 100%;
+        height: 100%;
+    } */
+
 
     .cd-img-container>img {
         height: auto;

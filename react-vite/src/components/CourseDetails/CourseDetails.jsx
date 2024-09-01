@@ -32,10 +32,10 @@ function CourseDetails() {
 
     return isLoaded && (
         <div className="cd-container">
-
-            <div className="cd-name">{course.name}</div>
+<div className="cd-name">{course.name}</div>
+            <img className="cd-banner"src={course.highlight_img}/>
             {/*! once i change logs to a map, change text area to a div and set the overflow for scroll. textarea can only have one child!*/}
-            <textarea disabled className="cd-log">{course.log_entry}</textarea>
+            <div className="cd-log">{course.log_entry}</div>
             <div className="cd-reviews">
                 {reviews.length > 0 ? reviews && reviews.map((review, index) => (
                   <div key={index}>

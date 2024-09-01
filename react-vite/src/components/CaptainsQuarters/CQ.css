@@ -82,7 +82,7 @@
 }
 
 
-@media (max-width: 855px) {
+@media (max-width: 600px) {
     .cq-container {
         display: flex;
         flex-direction: column;
