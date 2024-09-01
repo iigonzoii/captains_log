@@ -110,7 +110,7 @@ export const deleteCourse = (courseId) => async (dispatch) =>{
 //* Get current user's courses
 export const fetchCurrUserCourses = () => async (dispatch) => {
     try {
-        const res = await fetch("/api/courses/current", {
+        const res = await fetch("/api/courses/current/", {
             headers: { "Content-Type": "application/json" }
         });
         if (res.ok) {
