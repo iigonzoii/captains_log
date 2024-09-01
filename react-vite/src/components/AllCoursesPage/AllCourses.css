@@ -3,9 +3,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr ;
     grid-gap: 20px;
-    margin: 0 auto;
+    margin: 0px auto 20px auto;
     justify-items: center;
     margin-top: 50px;
+    background-color: rgba(18, 16, 28, 0.219);
+
 }
 
 .ac-card {

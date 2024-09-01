@@ -5,9 +5,10 @@
     min-height: 200px;
     margin: auto;
     padding: 20px;
-    background-color: rgba(18, 16, 28, 0.965);
+    background-color: rgba(18, 16, 28, 0.16);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: solid;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     justify-content: center;
     align-items: center;
     border-radius: 20px;
@@ -22,20 +23,6 @@
     color: red;
 }
 
-
-.ADalbumArea button {
-    background-color: white;
-    color: black;
-    font-size: 16px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.ADalbumArea button:active {
-    background-color: black;
-    color: white;
-    box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.4);
-}
 
 .review-buttons {
     display: flex;
@@ -85,8 +72,9 @@
 }
 
 .review-form-body textarea {
-    border-radius: 3px;
+    border-radius: 10px;
     height: 80px;
+    border: solid 1px;
 
 }
 
