@@ -6,7 +6,7 @@ import { useNavigate} from "react-router-dom";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-
+import "../Navigation/Navigation.css"
 function ProfileButton() {
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -58,7 +58,7 @@ function ProfileButton() {
               </li>
             </>
           ) : (
-            <>
+            <div className="login-signup">
               <OpenModalMenuItem
                 itemText="Log In"
                 onItemClick={closeMenu}
@@ -69,7 +69,7 @@ function ProfileButton() {
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
-            </>
+            </div>
           )}
         </ul>
       )}
