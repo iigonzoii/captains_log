@@ -7,7 +7,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 #modal-background {
@@ -16,13 +15,46 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-
 }
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  display: flex;
+  flex-direction: column;
+  color: rgb(135, 129, 129);
   border-radius: 20px;
-  /* background-color: rgba(18, 16, 28, 0.965); */
+  max-width: 800px;
+  min-width: 350px;
+  width: auto;
+  min-height: 200px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(18, 16, 28, 0.965);
+  font-size: larger;
+}
+#modal-content div{
+  /* border: solid yellow; */
+  display: flex;
+  justify-content: space-between;
+}
+#modal-content div button{
+  margin-top:10px;
+  background-color:  rgb(135, 129, 129);
+}
+#modal-content  button{
+  margin-top:10px;
+  background-color:  rgb(135, 129, 129);
+  padding: 2px;
+}
+#modal-content label{
+  display: flex;
+  justify-content: space-between;
+
+}
+#modal-content input{
+  background-color: rgba(18, 16, 28, 0.965);
+  color: rgb(145, 140, 140);
+  margin: 3px;
+  padding: 5px
 }
