@@ -121,30 +121,38 @@ function CreateCourse() {
                 />
                 <input
                     type="number"
+                    min="1"
+                    max="5"
                     value={gas}
                     onChange={e => setGas(e.target.value)}
-                    placeholder="Gas Availability"
+                    placeholder="Gas Availability...(1-5)"
                     className="input-field"
                 />
                 <input
                     type="number"
+                    min="1"
+                    max="5"
                     value={resourceAccess}
                     onChange={e => setResourceAccess(e.target.value)}
-                    placeholder="Resource Availabilty"
+                    placeholder="Resource Availabilty...(1-5)"
                     className="input-field"
                 />
                 <input
                     type="number"
+                    min="1"
+                    max="5"
                     value={difficulty}
                     onChange={e => setDifficulty(e.target.value)}
-                    placeholder="Difficulty Level"
+                    placeholder="Difficulty Level...(1-5)"
                     className="input-field"
                 />
                 <input
                     type="number"
+                    min="1"
+                    max="5"
                     value={curvedRoads}
                     onChange={e => setCurvedRoads(e.target.value)}
-                    placeholder="Road Curves"
+                    placeholder="Road Curves...(1-5)"
                     className="input-field"
                 />
                 <input

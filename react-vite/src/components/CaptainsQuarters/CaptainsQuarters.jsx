@@ -17,7 +17,7 @@ function CaptainsQuarters() {
             dispatch(fetchCurrUserCourses())
     }, [dispatch, user]);
     if (!user) {
-        return <p>Log In to enter Captains Quarters</p>;
+        return <p className="cq-unauth">Log In to enter Captains Quarters</p>;
     }
     if (userCourses.length < 1) {
         return <div className="cq-no-courses">

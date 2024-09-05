@@ -67,7 +67,7 @@ nav{
 @media (max-width:545px){
   .nav-color-size{
     color: rgb(135, 129, 129);
-    font-size:small;
+    font-size:medium;
     text-decoration: none;
     margin: 0px 15px ;
   }
