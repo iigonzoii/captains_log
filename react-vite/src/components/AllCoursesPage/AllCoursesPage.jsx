@@ -37,7 +37,7 @@ function AllCoursesPage() {
 
     useEffect(() => {
         dispatch(fetchCourses());
-    }, [dispatch]);
+    }, [dispatch, courseData]);
     return (
         <div className="ac-container">
             {courseData && courseData.map((course, index) => (

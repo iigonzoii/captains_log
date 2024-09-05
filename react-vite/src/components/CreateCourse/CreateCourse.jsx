@@ -109,7 +109,7 @@ function CreateCourse() {
                     <input
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        placeholder="Course Name"
+                        placeholder="Course Name...(Required)"
                         className="input-field"
                     />
                     {errors.name && <p className="error-message">{errors.name}</p>}
@@ -146,21 +146,21 @@ function CreateCourse() {
                     <input
                         value={originCity}
                         onChange={e => setOriginCity(e.target.value)}
-                        placeholder="Departure City"
+                        placeholder="Departure City...(Required)"
                         className="input-field"
                     />
                     {errors.originCity && <p className="error-message">{errors.originCity}</p>}
                     <input
                         value={state}
                         onChange={e => setState(e.target.value)}
-                        placeholder="Departure State"
+                        placeholder="Departure State...(Required)"
                         className="input-field"
                     />
                     {errors.state && <p className="error-message">{errors.state}</p>}
                     <input
                         value={country}
                         onChange={e => setCountry(e.target.value)}
-                        placeholder="Departure Country"
+                        placeholder="Departure Country...(Required)"
                         className="input-field"
                     />
                     {errors.country && <p className="error-message">{errors.country}</p>}

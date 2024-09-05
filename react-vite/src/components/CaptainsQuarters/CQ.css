@@ -10,6 +10,30 @@
         margin: 0 auto;
         color: rgb(135, 129, 129);
 }
+.cq-no-courses{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        align-items: center;
+        color: rgb(135, 129, 129);
+}
+.cq-no-courses button{
+    background-color: transparent;
+    color: rgb(135, 129, 129);
+    font-size: larger;
+    border: none;
+    margin-right: 2pc;
+    box-shadow: 5px 5px 5px black;
+}
+.cq-no-courses button:hover{
+    background-color: green;
+    color: black;
+    font-size: larger;
+    border: none;
+    margin-right: 2pc;
+    box-shadow: 5px 5px 5px black;
+}
 .cq-banner-area{
     grid-area: banner;
 }
@@ -90,7 +114,6 @@
         margin: 0 auto;
         align-items: center;
         color: rgb(135, 129, 129);
-        border: solid 1px red;
     }
     .cq-pro-img{
         position: static;
