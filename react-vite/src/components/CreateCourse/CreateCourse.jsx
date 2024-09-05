@@ -61,8 +61,8 @@ function CreateCourse() {
         };
 
         try {
-            console.log("NEWCOURSE",payload);
-            dispatch(createCourse(payload));
+            console.log("NEWCOURSE", payload);
+            await dispatch(createCourse(payload));
         }
         catch (err) {
             const data = await err.json();
@@ -79,109 +79,113 @@ function CreateCourse() {
     return (
         <div className="cc-container">
             <h1>Chart Your Course</h1>
-                <form className="cc-form-container" onSubmit={handleSubmit}>
-                    <input
-                        value={highlightImg}
-                        onChange={e => setHighlightImg(e.target.value)}
-                        placeholder="Highlight Image"
-                    />
-                    <input
-                        value={imgOne}
-                        onChange={e => setImgOne(e.target.value)}
-                        placeholder="Image One"
-                    />
-                    <input
-                        value={imgTwo}
-                        onChange={e => setImgTwo(e.target.value)}
-                        placeholder="Image Two"
-                    />
-                    <input
-                        value={imgThree}
-                        onChange={e => setImgThree(e.target.value)}
-                        placeholder="Image Three"
-                    />
-                    <input
-                        value={imgFour}
-                        onChange={e => setImgFour(e.target.value)}
-                        placeholder="Image Four"
-                        className="input-field"
-                    />
-                    <input
-                        value={name}
-                        onChange={e => setName(e.target.value)}
-                        placeholder="Course Name...(Required)"
-                        className="input-field"
-                    />
-                    {errors.name && <p className="error-message">{errors.name}</p>}
-                    <input
-                        value={surface}
-                        onChange={e => setSurface(e.target.value)}
-                        placeholder="Surface Type"
-                        className="input-field"
-                    />
-                    <input
-                        value={gas}
-                        onChange={e => setGas(e.target.value)}
-                        placeholder="Gas Availability"
-                        className="input-field"
-                    />
-                    <input
-                        value={resourceAccess}
-                        onChange={e => setResourceAccess(e.target.value)}
-                        placeholder="Resource Availabilty"
-                        className="input-field"
-                    />
-                    <input
-                        value={difficulty}
-                        onChange={e => setDifficulty(e.target.value)}
-                        placeholder="Difficulty Level"
-                        className="input-field"
-                    />
-                    <input
-                        value={curvedRoads}
-                        onChange={e => setCurvedRoads(e.target.value)}
-                        placeholder="Road Curves"
-                        className="input-field"
-                    />
-                    <input
-                        value={originCity}
-                        onChange={e => setOriginCity(e.target.value)}
-                        placeholder="Departure City...(Required)"
-                        className="input-field"
-                    />
-                    {errors.originCity && <p className="error-message">{errors.originCity}</p>}
-                    <input
-                        value={state}
-                        onChange={e => setState(e.target.value)}
-                        placeholder="Departure State...(Required)"
-                        className="input-field"
-                    />
-                    {errors.state && <p className="error-message">{errors.state}</p>}
-                    <input
-                        value={country}
-                        onChange={e => setCountry(e.target.value)}
-                        placeholder="Departure Country...(Required)"
-                        className="input-field"
-                    />
-                    {errors.country && <p className="error-message">{errors.country}</p>}
-                    <h2>Log Your Experience!</h2>
-                    <textarea
-                        value={logEntry}
-                        onChange={e => setLogEntry(e.target.value)}
-                        placeholder="Log your experience as you go!"
-                    />
-                    <div className="button-group">
-                        <button type="submit" className="form-button submit-button">Submit
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => navigate(-1)}
-                            className="form-button cancel-button"
-                        >
-                            Cancel
-                        </button>
-                    </div>
-                </form>
+            <form className="cc-form-container" onSubmit={handleSubmit}>
+                <input
+                    value={highlightImg}
+                    onChange={e => setHighlightImg(e.target.value)}
+                    placeholder="Highlight Image"
+                />
+                <input
+                    value={imgOne}
+                    onChange={e => setImgOne(e.target.value)}
+                    placeholder="Image One"
+                />
+                <input
+                    value={imgTwo}
+                    onChange={e => setImgTwo(e.target.value)}
+                    placeholder="Image Two"
+                />
+                <input
+                    value={imgThree}
+                    onChange={e => setImgThree(e.target.value)}
+                    placeholder="Image Three"
+                />
+                <input
+                    value={imgFour}
+                    onChange={e => setImgFour(e.target.value)}
+                    placeholder="Image Four"
+                    className="input-field"
+                />
+                <input
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    placeholder="Course Name...(Required)"
+                    className="input-field"
+                />
+                {errors.name && <p className="error-message">{errors.name}</p>}
+                <input
+                    value={surface}
+                    onChange={e => setSurface(e.target.value)}
+                    placeholder="Surface Type"
+                    className="input-field"
+                />
+                <input
+                    type="number"
+                    value={gas}
+                    onChange={e => setGas(e.target.value)}
+                    placeholder="Gas Availability"
+                    className="input-field"
+                />
+                <input
+                    type="number"
+                    value={resourceAccess}
+                    onChange={e => setResourceAccess(e.target.value)}
+                    placeholder="Resource Availabilty"
+                    className="input-field"
+                />
+                <input
+                    type="number"
+                    value={difficulty}
+                    onChange={e => setDifficulty(e.target.value)}
+                    placeholder="Difficulty Level"
+                    className="input-field"
+                />
+                <input
+                    type="number"
+                    value={curvedRoads}
+                    onChange={e => setCurvedRoads(e.target.value)}
+                    placeholder="Road Curves"
+                    className="input-field"
+                />
+                <input
+                    value={originCity}
+                    onChange={e => setOriginCity(e.target.value)}
+                    placeholder="Departure City...(Required)"
+                    className="input-field"
+                />
+                {errors.originCity && <p className="error-message">{errors.originCity}</p>}
+                <input
+                    value={state}
+                    onChange={e => setState(e.target.value)}
+                    placeholder="Departure State...(Required)"
+                    className="input-field"
+                />
+                {errors.state && <p className="error-message">{errors.state}</p>}
+                <input
+                    value={country}
+                    onChange={e => setCountry(e.target.value)}
+                    placeholder="Departure Country...(Required)"
+                    className="input-field"
+                />
+                {errors.country && <p className="error-message">{errors.country}</p>}
+                <h2>Log Your Experience!</h2>
+                <textarea
+                    value={logEntry}
+                    onChange={e => setLogEntry(e.target.value)}
+                    placeholder="Log your experience as you go!"
+                />
+                <div className="button-group">
+                    <button type="submit" className="form-button submit-button">Submit
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => navigate(-1)}
+                        className="form-button cancel-button"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
         </div>
     );
 }

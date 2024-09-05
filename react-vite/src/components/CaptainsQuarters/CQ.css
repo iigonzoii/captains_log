@@ -2,7 +2,7 @@
     max-width: 1000px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 60% 25% 25%;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas:
         "banner banner banner banner"
         "course course transport transport"
