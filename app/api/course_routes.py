@@ -10,6 +10,7 @@ course_routes = Blueprint('courses', __name__)
 @course_routes.route('/', methods=['GET'])
 def all_courses():
     courses = Course.query.all()
+    print("\n\n",courses)
     if not courses:
         return {'errors': {'message': 'No existing courses'}}, 404
 

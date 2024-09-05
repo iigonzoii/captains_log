@@ -1,5 +1,5 @@
 import { fetchCourses } from "../../redux/courseReducer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./AllCourses.css"
@@ -9,6 +9,8 @@ import "./AllCourses.css"
 function AllCoursesPage() {
     const navigate = useNavigate();
     let courseData = useSelector((state) => state.course);
+    const [isLoaded, setIsLoaded] = useState()
+    console.log("COURSEDATA",courseData)
     const dispatch = useDispatch();
     courseData= Object.values(courseData);
     function numToX (number){
@@ -36,8 +38,8 @@ function AllCoursesPage() {
 }
 
     useEffect(() => {
-        dispatch(fetchCourses());
-    }, [dispatch, courseData]);
+        dispatch(fetchCourses()).then(()=> setIsLoaded(true));
+    }, [dispatch]);
     return (
         <div className="ac-container">
             {courseData && courseData.map((course, index) => (
