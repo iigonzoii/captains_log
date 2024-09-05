@@ -9,6 +9,7 @@ import "./AllCourses.css"
 function AllCoursesPage() {
     const navigate = useNavigate();
     let courseData = useSelector((state) => state.course);
+    console.log("COURSEDATA",courseData)
     const dispatch = useDispatch();
     courseData= Object.values(courseData);
     function numToX (number){
@@ -37,7 +38,7 @@ function AllCoursesPage() {
 
     useEffect(() => {
         dispatch(fetchCourses());
-    }, [dispatch, courseData]);
+    }, [dispatch]);
     return (
         <div className="ac-container">
             {courseData && courseData.map((course, index) => (
