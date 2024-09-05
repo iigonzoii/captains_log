@@ -9,7 +9,8 @@ import "./AllCourses.css"
 function AllCoursesPage() {
     const navigate = useNavigate();
     let courseData = useSelector((state) => state.course);
-    const [isLoaded, setIsLoaded] = useState()
+    const [isLoaded, setIsLoaded] = useState(false)
+    console.log(isLoaded)
     console.log("COURSEDATA",courseData)
     const dispatch = useDispatch();
     courseData= Object.values(courseData);
