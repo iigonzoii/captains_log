@@ -26,6 +26,11 @@
     /* color: rgb(135, 129, 129); */
     color: rgb(145, 140, 140);
 }
+.error-message{
+    color: red;
+    border: none;
+    background-color: transparent;
+}
 .cc-form-container h2 {
     border: none;
     background-color: transparent;

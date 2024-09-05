@@ -115,6 +115,7 @@ export const fetchCurrUserCourses = () => async (dispatch) => {
         });
         if (res.ok) {
             const data = await res.json();
+            console.log("DATAAAAAAAA",data)
             dispatch(loadUserCourses(data));
         } else {
             const errorData = await res.json();

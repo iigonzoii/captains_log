@@ -10,7 +10,7 @@ class UpdateCourseForm(FlaskForm):
     img_3 = StringField('Image 3', validators=[Length(max=250), Optional()])
     img_4 = StringField('Image 4', validators=[Length(max=250), Optional()])
     name = StringField('Name Your Course', validators=[DataRequired(), Length(max=50)])
-    surface = StringField('Surface', validators=[DataRequired(), Length(max=50)])
+    surface = StringField('Surface', validators=[ Length(max=50)])
 
     gas = IntegerField('Fuel availability', validators=[Optional()])
     # resource_access = RadioField('Access to resources', validators=[Optional()], choices=[])
