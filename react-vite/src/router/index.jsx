@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
+import Splash from '../components/Splash/Splash';
 // import CourseMapper from '../components/AllCoursesPage/CourseMapper';
 import AllCoursesPage from '../components/AllCoursesPage/AllCoursesPage';
 import CaptainsQuarters from '../components/CaptainsQuarters';
@@ -15,7 +16,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1>Sploosh!</h1>,
+        element: <Splash />,
       },
       {
         path: "login",

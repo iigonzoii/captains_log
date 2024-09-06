@@ -1,0 +1,31 @@
+.splash-container{
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    align-items: center;
+    color: rgb(135, 129, 129);
+    background-color: rgba(18, 16, 28, 0.965);
+    padding: 12px
+}
+.splash-container ol{
+    font-size: large;
+}
+.splash-container button{
+    font-size: 25px ;
+    border-radius: 3px;
+    color: rgb(135, 129, 129);
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+    margin: 10px;
+    background-color: transparent;
+    box-shadow: 5px 5px 5px black;
+    border: none;
+    font-weight: bold;
+}
+.splash-container button:hover{
+    background-color: green;
+    color: black;
+}
