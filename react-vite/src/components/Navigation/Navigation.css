@@ -31,6 +31,7 @@
   border: none;
   font-weight: bold;
 }
+
 .login-signup *{
   margin:10px 0px;
   cursor:pointer
@@ -51,6 +52,10 @@ nav{
   color: rgb(145, 140, 140);
   border-radius: 20px;
 }
+.nav-profile-button:hover{
+  color: black;
+  background-color: green;
+}
 .nav-right-side{
   display: flex;
   flex-wrap: nowrap;
@@ -62,12 +67,15 @@ nav{
   text-decoration: none;
   margin: 0px 15px ;
 }
+.nav-color-size:hover{
+  color: green;
+}
 
 
 @media (max-width:545px){
   .nav-color-size{
     color: rgb(135, 129, 129);
-    font-size:small;
+    font-size:medium;
     text-decoration: none;
     margin: 0px 15px ;
   }

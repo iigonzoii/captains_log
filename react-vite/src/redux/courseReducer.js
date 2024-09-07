@@ -1,12 +1,12 @@
-    //*------ACTION TYPES---------
+//*------ACTION TYPES---------
 const LOAD_COURSES = "course/loadCourses"
 const LOAD_COURSE = "course/loadCourse"
 const UPDATE_COURSE = "course/updateCourse"
 const CREATE_COURSE = "course/createCourse"
-const USER_COURSES =    "course/loadUserCourses"
+const USER_COURSES = "course/loadUserCourses"
 const DELETE_COURSE = "course/deleteCourse"
 
-    //*-------ACTION CREATORS---------
+//*-------ACTION CREATORS---------
 export const loadCourses = (courses) => {
     return {
         type: LOAD_COURSES,
@@ -44,7 +44,7 @@ export const removeCourse = (courseId) => ({
     courseId
 })
 
-        //*---------THUNKS------------*
+//*---------THUNKS------------*
 
 //* Get all courses
 export const fetchCourses = () => async (dispatch) => {
@@ -59,7 +59,7 @@ export const fetchCourses = () => async (dispatch) => {
 export const fetchCourse = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}`)
     const course = await response.json()
-    console.log("LOADCOURSETHUNK",course)
+    console.log("LOADCOURSETHUNK", course)
     dispatch(loadCourse(course))
     return course
 }
@@ -80,7 +80,7 @@ export const fetchUpdateCourse = (course) => async (dispatch) => {
         if (res.ok) {
             const data = await res.json();
 
-          // console.log('Data',data)
+            // console.log('Data',data)
 
             dispatch(updateCourse(course.id, data));
         } else {
@@ -93,7 +93,7 @@ export const fetchUpdateCourse = (course) => async (dispatch) => {
 
 
 //* delete course by id
-export const deleteCourse = (courseId) => async (dispatch) =>{
+export const deleteCourse = (courseId) => async (dispatch) => {
     try {
         const res = await fetch(`/api/courses/${courseId}`, {
             method: 'DELETE'
@@ -115,6 +115,7 @@ export const fetchCurrUserCourses = () => async (dispatch) => {
         });
         if (res.ok) {
             const data = await res.json();
+            console.log("DATAAAAAAAA", data)
             dispatch(loadUserCourses(data));
         } else {
             const errorData = await res.json();
@@ -151,7 +152,7 @@ export const createCourse = (course) => async (dispatch) => {
 };
 
 
-            //*---------REDUCERS-----------*
+//*---------REDUCERS-----------*
 
 const initialState = { courseDetail: {} };
 
@@ -165,9 +166,9 @@ const courseReducer = (state = initialState, action) => {
             })
             return newState
         }
-        case LOAD_COURSE:{
-            console.log("ACTION",action)
-            return { ...state, courseDetail: {...action.course} };
+        case LOAD_COURSE: {
+            console.log("ACTION", action)
+            return { ...state, courseDetail: { ...action.course } };
             // const newState = { ...state };
             // const updatedCourse = {
             //     ...action.course,
@@ -176,27 +177,32 @@ const courseReducer = (state = initialState, action) => {
             // newState[action.course.Course.id] = updatedCourse;
         }
         // return { ...state, courseDetail: {...action.course}};
-            case UPDATE_COURSE: {
-                // console.log(action.payload)
-                return {
-                    ...state,
-                    courseDetail: action.payload
-                };
-            }
+        case UPDATE_COURSE: {
+            // console.log(action.payload)
+            return {
+                ...state,
+                courseDetail: action.payload
+            };
+        }
 
         case CREATE_COURSE:
-                return {
-                    ...state,
-                    [action.course.id]: action.course
-                };
+            {
+                const newState = { ...state };
+                console.log("NS", newState)
+                console.log("ACT", action.course)
+
+                newState[action.course.id] = action.course
+                console.log(newState === state)
+                return newState
+            }
 
         case USER_COURSES: {
-                    const newState = {};
-                    action.courses.courses.forEach(course => {
-                        newState[course.id] = course
-                    })
-                    return {  ...newState}
-                }
+            const newState = {};
+            action.courses.courses.forEach(course => {
+                newState[course.id] = course
+            })
+            return { ...newState }
+        }
         case DELETE_COURSE: {
             const newState = { ...state };
             delete newState[action.courseId];
