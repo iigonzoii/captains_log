@@ -60,7 +60,8 @@ export const fetchCourse = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}`)
     const course = await response.json()
     console.log("LOADCOURSETHUNK", course)
-    dispatch(loadCourse(course))
+    // ! i added .course since im returning an object now, this may break it
+    dispatch(loadCourse(course.course))
     return course
 }
 

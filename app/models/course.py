@@ -26,7 +26,7 @@ class Course(db.Model):
     log_entry = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
-
+    images =db.relationship('Image', back_populates='course', cascade="all, delete-orphan")
     reviews = db.relationship('Review', back_populates='course', cascade="all, delete-orphan")
 
     def to_dict(self):
@@ -50,6 +50,7 @@ class Course(db.Model):
             'log_entry': self.log_entry,
             'country': self.country,
             'reviews': [review.to_dict() for review in self.reviews],
+            'images': [image.to_dict() for image in self.images],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 from sqlalchemy.orm import joinedload
 from flask_login import current_user, login_required
-from app.models import Course, User, Review, db
-from app.forms import CourseForm, UpdateCourseForm, ReviewPostForm
+from app.models import Course, User, Review,Image, db
+from app.forms import CourseForm, UpdateCourseForm, ReviewPostForm,ImagePostForm,ImageUpdateForm
 
 course_routes = Blueprint('courses', __name__)
 
@@ -17,15 +17,20 @@ def all_courses():
     courses_dict = [ course.to_dict() for course in courses ]
     return {"courses":courses_dict}, 200
 
-#* Get course by id
+#* Get course by id --------------------------------------------------------current feat
 @course_routes.route('/<int:course_id>/', methods=['GET'])
 def course_by_id(course_id):
     course_details = db.session.query(Course).options(
-        joinedload(Course.reviews).joinedload(Review.reviewer)
+        joinedload(Course.reviews).joinedload(Review.reviewer),
+        joinedload(Course.images).joinedload(Image.img_owner)
     ).filter(Course.id == course_id).first()
+    course_id = course_details.id
+    images = db.session.query(Image).filter(Image.course_id == course_id).all()
+
     if not course_details:
         return {'errors': {'message': 'Course not found'}}, 404
-    return course_details.to_dict(), 200
+    # ! this is going to break something. I was initially returning course_details.to dict, now i am returning an object where i refer to course as a key value pair.
+    return {"course":course_details.to_dict(), "images":[image.to_dict() for image in images]}, 200
 
 #* Get all courses by User
 @course_routes.route('/current', methods=['GET'])
@@ -119,8 +124,51 @@ def delete_course(course_id):
 
     return {'message': 'Course deleted successfully'}, 200
 
+        #*--------------------------Image route--------------------------------
+@course_routes.route('/<int:course_id>/images/')
+def course_images(course_id):
+    """
+    Get all images for a course
+    """
+    images = Image.query.filter_by(course_id=course_id).all()
+    if not images:
+        return {'errors': {'message': 'No existing images'}}, 404
+    return {'images': [image.to_dict() for image in images]}
 
-#*-------Review route--------
+
+
+        #*--------------------------Image route--------------------------------
+@course_routes.route('/<int:course_id>/images/', methods=['POST'])
+# @login_required
+def new_review(course_id):
+    """
+    Creates an image for a course
+    """
+    course = Course.query.get(course_id)
+    if not course:
+        return {'errors': {'message': 'Course not found'}}, 400
+    # existing_review = Review.query.filter_by(user_id=current_user.id, course_id=course_id).first()
+    # if existing_review:
+    #     return {'errors': {'message': 'This user has an existing review for the course'}}, 400
+
+    form = ImagePostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        theImage = Image(
+            user_id=current_user.id,
+            course_id=course_id,
+            caption=form.data.caption,
+            file=form.data.file,
+            private=form.data.private
+            )
+        db.session.add(theImage)
+        db.session.commit()
+        return theImage.to_dict(), 201
+    return form.errors, 401
+
+
+#*----------------------Review route-------------------------
 #* Get all reviews by course id
 @course_routes.route('/<int:course_id>/reviews/')
 def course_reviews(course_id):
@@ -132,7 +180,7 @@ def course_reviews(course_id):
         return {'errors': {'message': 'No existing reviews'}}, 404
     return {'reviews': [review.to_dict() for review in reviews]}
 
-#*------ Review route---------
+#*-------------------- Review route----------------------------
 #* Create a review by course id
 @course_routes.route('/<int:course_id>/reviews/', methods=['POST'])
 # @login_required

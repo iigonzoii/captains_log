@@ -15,6 +15,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     reviews = db.relationship('Review', back_populates='reviewer', cascade="all, delete-orphan")
+    # !why do i need this? 
+    images = db.relationship('Image', back_populates='img_owner', cascade="all, delete-orphan")
 
     @property
     def password(self):
