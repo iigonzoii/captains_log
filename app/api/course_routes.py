@@ -140,7 +140,7 @@ def course_images(course_id):
         #*--------------------------Image route--------------------------------
 @course_routes.route('/<int:course_id>/images/', methods=['POST'])
 # @login_required
-def new_review(course_id):
+def new_image(course_id):
     """
     Creates an image for a course
     """

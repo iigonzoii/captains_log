@@ -59,7 +59,7 @@ export const fetchCourses = () => async (dispatch) => {
 export const fetchCourse = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}`)
     const course = await response.json()
-    console.log("LOADCOURSETHUNK", course)
+    // console.log("LOADCOURSETHUNK", course)
     // ! i added .course since im returning an object now, this may break it
     dispatch(loadCourse(course.course))
     return course
@@ -116,7 +116,7 @@ export const fetchCurrUserCourses = () => async (dispatch) => {
         });
         if (res.ok) {
             const data = await res.json();
-            console.log("DATAAAAAAAA", data)
+            // console.log("DATAAAAAAAA", data)
             dispatch(loadUserCourses(data));
         } else {
             const errorData = await res.json();
@@ -168,7 +168,7 @@ const courseReducer = (state = initialState, action) => {
             return newState
         }
         case LOAD_COURSE: {
-            console.log("ACTION", action)
+            // console.log("ACTION", action)
             return { ...state, courseDetail: { ...action.course } };
             // const newState = { ...state };
             // const updatedCourse = {
@@ -189,11 +189,11 @@ const courseReducer = (state = initialState, action) => {
         case CREATE_COURSE:
             {
                 const newState = { ...state };
-                console.log("NS", newState)
-                console.log("ACT", action.course)
+                // console.log("NS", newState)
+                // console.log("ACT", action.course)
 
                 newState[action.course.id] = action.course
-                console.log(newState === state)
+                // console.log(newState === state)
                 return newState
             }
 

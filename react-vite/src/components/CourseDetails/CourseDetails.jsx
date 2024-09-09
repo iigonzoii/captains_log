@@ -2,34 +2,43 @@ import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchCourse } from "../../redux/courseReducer"
+import { fetchImagesByCourse } from "../../redux/image"
 import "./CD.css"
 import { fetchReviewsByCourse } from "../../redux/review"
 import ReviewButton from "../ReviewFormModal/ReviewButton";
 import EditReviewModal from "../ReviewFormModal/EditReviewModal"
 import DeleteReviewModal from "../ReviewFormModal/DeleteReviewModal"
 import OpenModalButton from "../OpenModalButton";
+import EditImageModal from "../ImageFormModal/EditImageModal";
+import DeleteImageModal from "../ImageFormModal/DeleteImageModal";
+import ImageButton from "../ImageFormModal/ImageButton"
 
 
 function CourseDetails() {
     const dispatch = useDispatch()
     const { course_id } = useParams()
     const [isLoaded, setIsLoaded] = useState(false)
-    console.log("ID", course_id)
+    // console.log("ID", course_id)
     const course = useSelector((state) => state.course.courseDetail)
-    console.log("COURSESELECT", course)
+    console.log("COURSE", course)
     const sessionUser = useSelector((state) => state.session.user);
     let reviews = useSelector(state => state.review)
     reviews = Object.values(reviews)
-    console.log("REVIEWS", reviews)
+    // let images = course.images
+    // images = Object.values(images)
+    // images = Object.values(images)
+    // images=Object.values(course.images)
+    // console.log("IMAGES", images)
 
 
     useEffect(() => {
         //?shouldnt i be watching reviews some how? or is watching dispatch doing that?
         dispatch(fetchReviewsByCourse(+course_id))
+            .then(() => dispatch(fetchImagesByCourse(+course_id)))
             .then(() => dispatch(fetchCourse(+course_id)))
             .then(() => setIsLoaded(true));
-    }, [dispatch, course_id]);
-
+    }, [dispatch]);
+//  course
     return isLoaded && (
         <div className="cd-container">
             <div className="cd-name">{course.name}</div>
@@ -72,13 +81,45 @@ function CourseDetails() {
             <div className="cd-poi">{course.poi}</div>
             {/* below images div will be an array at some point being mapped over */}
             <div className="cd-img-container">
-                <img className="cd-img" src={course.img_1} alt="image of trip" />
-                <img className="cd-img" src={course.img_2} alt="image of trip" />
-                <img className="cd-img" src={course.img_3} alt="image of trip" />
-                <img className="cd-img" src={course.img_4} alt="image of trip" />
+            {course.images.length > 0 ? course.images && course.images.map((image, index) => (
+                    <div key={index}>
+                        {`UserId-${course.owner_id}imageId-${image.id}`}
+
+                        {sessionUser && course.images.user_id !== sessionUser.id && (
+                            <div className="review-modify-buttons">
+                                <div className="review-edit-button">
+                                    <OpenModalButton
+                                        buttonText="EDIT"
+                                        modalComponent={<EditImageModal imageId={image.id} image={image} />}
+                                    />
+                                </div>
+                                <div className="review-delete-button">
+                                    <OpenModalButton
+                                        buttonText="DELETE"
+                                        modalComponent={<DeleteImageModal imageId={image.id} />}
+                                    />
+                                </div>
+                            </div>
+                        )}
+                        <img src={image.file} />
+                        <p>{image.caption}</p>
+                        <p>{image.created_at}</p>
+                    </div>
+                )) : <p>No images yet</p>}
+                                {sessionUser && course.owner_id == sessionUser.id && (
+                    <div className="ad-image-button">
+                        {(
+                            <ImageButton course_id={course_id} />
+                        )}
+                    </div>
+                )}
+
             </div>
         </div>
     )
 }
-
+                {/* <img className="cd-img" src={course.images[0].file} alt="image of trip" />
+                <img className="cd-img" src={course.images[1].file} alt="image of trip" />
+                <img className="cd-img" src={course.images[2].file} alt="image of trip" />
+                <img className="cd-img" src={course.images[3].file} alt="image of trip" /> */}
 export default CourseDetails

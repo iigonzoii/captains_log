@@ -1,0 +1,94 @@
+.review-form-parent {
+    max-width: 800px;
+    min-width: 350px;
+    width: auto;
+    min-height: 200px;
+    margin: auto;
+    padding: 20px;
+    background-color: rgba(18, 16, 28, 0.16);
+    border-radius: 10px;
+    border: solid;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.review-form-heading {
+    color: rgb(135, 129, 129);
+}
+
+#delete-subheading {
+    font-size: 20px;
+    color: red;
+}
+
+
+.review-buttons {
+    display: flex;
+    justify-content: space-between;
+    /* border: solid 1px red; */
+    gap: 10px;
+}
+
+.review-buttons button{
+    display: inline-flex;
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    background-color:  rgb(135, 129, 129);
+
+}
+
+
+.submit-button, .cancel-button {
+    width: 45%;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 0%;
+    border: 1px solid rgb(13, 0, 0);
+    box-shadow: 1.5px 1.5px 0.5px 0px rgba(0, 0, 0, 1);
+}
+
+.submit-button:hover{
+    background-color: green;
+}
+.cancel-button:hover {
+    background-color: red;
+}
+
+.review-form-body {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.review-form-body label {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-form-body textarea {
+    border-radius: 10px;
+    height: 80px;
+    border: solid 1px;
+
+}
+
+.review-modify-buttons {
+    display:flex;
+    flex-direction: row;
+}
+.review-modify-buttons button {
+    background-color:  rgb(135, 129, 129);
+}
+
+.review-edit-button button:hover {
+    background-color: green;
+}
+.review-delete-button button:hover {
+    background-color: red;
+}
