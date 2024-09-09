@@ -75,7 +75,7 @@ font-size: 30px;
     border: none
 }
 
-.cd-img-container>img {
+.cd-img-container>div>div>img {
     height: 200px;
     width: 200px;
     object-fit: cover;
