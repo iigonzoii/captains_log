@@ -61,7 +61,7 @@ function CreateCourse() {
         };
 
         try {
-            console.log("NEWCOURSE", payload);
+            // console.log("NEWCOURSE", payload);
             await dispatch(createCourse(payload));
         }
         catch (err) {

@@ -11,7 +11,7 @@ function AllCoursesPage() {
     let courseData = useSelector((state) => state.course);
     const [isLoaded, setIsLoaded] = useState(false)
     console.log(isLoaded)
-    console.log("COURSEDATA",courseData)
+    // console.log("COURSEDATA",courseData)
     const dispatch = useDispatch();
     courseData= Object.values(courseData);
     function numToX (number){

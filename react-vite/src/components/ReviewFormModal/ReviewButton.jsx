@@ -4,8 +4,8 @@ import PostReviewModal from "./PostReviewModal"
 
 function ReviewButton({ reviews, course_id }) {
     const sessionUser = useSelector((state) => state.session.user);
-    let course = useSelector(state => state.course);
-    console.log("Flag:", course)
+    // let course = useSelector(state => state.course);
+    // console.log("Flag:", course)
 
     const userAlreadyReviewed = sessionUser && reviews ? reviews.some((review) => review.user_id === sessionUser.id) : false;
 

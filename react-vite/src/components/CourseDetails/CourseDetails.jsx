@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { fetchCourse } from "../../redux/courseReducer"
-// import { fetchImagesByCourse } from "../../redux/image"
+import { fetchImagesByCourse } from "../../redux/image"
 import "./CD.css"
 import { fetchReviewsByCourse } from "../../redux/review"
 import ReviewButton from "../ReviewFormModal/ReviewButton";
@@ -20,16 +20,20 @@ function CourseDetails() {
     const [isLoaded, setIsLoaded] = useState(false)
     // console.log("ID", course_id)
     const course = useSelector((state) => state.course.courseDetail)
-    console.log("COURSE", course)
+    // console.log("COURSE", course)
     const sessionUser = useSelector((state) => state.session.user);
+    let images = useSelector((state) => state.image)
     let reviews = useSelector(state => state.review)
     reviews = Object.values(reviews)
+    images = Object.values(images)
+    // images = Object.values(images)
+    // console.log("IMG",images)
 
 
     useEffect(() => {
         //?shouldnt i be watching reviews some how? or is watching dispatch doing that?
         dispatch(fetchReviewsByCourse(+course_id))
-            // .then(() => dispatch(fetchImagesByCourse(+course_id)))
+            .then(() => dispatch(fetchImagesByCourse(+course_id)))
             .then(() => dispatch(fetchCourse(+course_id)))
             .then(() => setIsLoaded(true));
     }, [dispatch]);
@@ -76,7 +80,7 @@ function CourseDetails() {
             <div className="cd-poi">{course.poi}</div>
             {/* below images div will be an array at some point being mapped over */}
             <div className="cd-img-container">
-                {course.images.length > 0 ? course.images && course.images.map((image, index) => (
+                {images.length > 0 ? images.map((image, index) => (
                     <div key={index}>
                         {`UserId-${course.owner_id}imageId-${image.id}`}
                         {sessionUser && course.images.user_id !== sessionUser.id && (
