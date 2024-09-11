@@ -18,6 +18,8 @@ function CourseDetails() {
     const dispatch = useDispatch()
     const { course_id } = useParams()
     const [isLoaded, setIsLoaded] = useState(false)
+    // const [hideDelete, setHideDelete] = useState("")
+    // const [hideEdit, setHideEdit] = useState("")
     // console.log("ID", course_id)
     const course = useSelector((state) => state.course.courseDetail)
     // console.log("COURSE", course)
@@ -31,20 +33,17 @@ function CourseDetails() {
 
 
     useEffect(() => {
-        //?shouldnt i be watching reviews some how? or is watching dispatch doing that?
+        // if (sessionUser.id !== images.user_id) setHideDelete("none"); setHideEdit("none")
         dispatch(fetchReviewsByCourse(+course_id))
             .then(() => dispatch(fetchImagesByCourse(+course_id)))
             .then(() => dispatch(fetchCourse(+course_id)))
             .then(() => setIsLoaded(true));
     }, [dispatch]);
-    //  course
     return isLoaded && (
         <div className="cd-container">
             <div className="cd-name">{course.name}</div>
 
             <img className="cd-banner" src={course.highlight_img} />
-
-            {/*! once i change logs to a map, change text area to a div and set the overflow for scroll. textarea can only have one child!*/}
             <div className="cd-log">{course.log_entry}</div>
             <div className="cd-reviews">
                 {reviews.length > 0 ? reviews && reviews.map((review, index) => (
@@ -89,13 +88,15 @@ function CourseDetails() {
                                 <p>{image.caption}</p>
                                 <p>{image.created_at}</p>
                                 <div className="review-modify-buttons">
-                                    <div className="review-edit-button">
+                                    <div className={`review-modify-buttons`} >
+                                        {/* ${hideEdit} */}
                                         <OpenModalButton
                                             buttonText="EDIT"
                                             modalComponent={<EditImageModal imageId={image.id} image={image} />}
                                         />
                                     </div>
-                                    <div className="review-delete-button">
+                                    <div className={`review-delete-button `}>
+                                        {/* ${hideDelete} */}
                                         <OpenModalButton
                                             buttonText="DELETE"
                                             modalComponent={<DeleteImageModal imageId={image.id} />}
@@ -107,7 +108,7 @@ function CourseDetails() {
 
                     </div>
                 )) : <p>No images yet</p>}
-                {sessionUser && course.owner_id === sessionUser.id && (
+                { course.owner_id == sessionUser.id && (
                     <div className="ad-image-button">
                         {(
                             <ImageButton course_id={course_id} />

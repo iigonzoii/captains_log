@@ -37,9 +37,9 @@ def update_image(image_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        theImage.caption=form.data.caption,
-        theImage.file=form.data.file,
-        theImage.private=form.data.private
+        theImage.caption=form.data['caption'],
+        theImage.file=form.data['file'],
+        theImage.private=form.data['private']
         db.session.add(theImage)
         db.session.commit()
         return theImage.to_dict()

@@ -57,7 +57,7 @@ function CreateImageModal({ course_id}) {
                     onChange={handleChange}
                     required
                 />
-                <label htmlFor="private">Is this photo Private?</label>
+                <label htmlFor="private">This photo is private?</label>
                 <select
                     id="private"
                     name="private"

@@ -138,8 +138,8 @@ def course_images(course_id):
 
 
         #*--------------------------Image route--------------------------------
-@course_routes.route('/<int:course_id>/images/', methods=['POST'])
-# @login_required
+@course_routes.route('/<int:course_id>/images', methods=['POST'])
+@login_required
 def new_image(course_id):
     """
     Creates an image for a course
@@ -153,18 +153,22 @@ def new_image(course_id):
 
     form = ImagePostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print("AboveIfformdata\n\n",form.data)
 
     if form.validate_on_submit():
+        print("INIFform\n\n",form.data['caption'])
         theImage = Image(
             user_id=current_user.id,
             course_id=course_id,
-            caption=form.data.caption,
-            file=form.data.file,
-            private=form.data.private
+            caption=form.data['caption'],
+            file=form.data['file'],
+            private=form.data['private']
             )
         db.session.add(theImage)
         db.session.commit()
+        print("img\n\n",theImage)
         return theImage.to_dict(), 201
+    print("formerror\n\n",form.errors)
     return form.errors, 401
 
 
