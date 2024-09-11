@@ -47,6 +47,7 @@ export const fetchCurrUserImages = () => async (dispatch) => {
 export const fetchImagesByCourse = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}/images`)
     const images = await response.json()
+    console.log();
     dispatch(loadImages(images))
 }
 

@@ -130,6 +130,7 @@ def course_images(course_id):
     """
     Get all images for a course
     """
+    print('TEST------------------------', course_id)
     images = Image.query.filter_by(course_id=course_id).all()
     if not images:
         return {'errors': {'message': 'No existing images'}}, 404

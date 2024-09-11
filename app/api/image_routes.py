@@ -21,28 +21,31 @@ def user_images():
 
 
 #* Update image
-@image_routes.route('/<int:image_id>/', methods=['PUT'])
+@image_routes.route('/<int:image_id>', methods=['PUT']) #! got rid of trailing "/" to fix unauthorize error.
 @login_required
 def update_image(image_id):
     """
     Updates a user's image for a course
     """
+    # print('TEST!!!!', current_user.id)
     theImage = Image.query.get(image_id)
     if not theImage:
         return {'errors': {'message': 'Image not found'}}, 404
     if theImage.user_id != current_user.id:
         return {'errors': {'message': 'Unauthorized'}}, 401
+    dictImage = theImage.to_dict();
 
     form = ImageUpdateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
-        theImage.caption=form.data.caption,
-        theImage.file=form.data.file,
-        theImage.private=form.data.private
+    if form.validate_on_submit(): #! not keying into the form data correctly. previously had form.data.caption but it should be form.caption.data.
+        theImage.caption=form.caption.data #! trailing commas at the end of each update statement was causing the error.
+        theImage.file=form.file.data
+        theImage.private=form.private.data
         db.session.add(theImage)
         db.session.commit()
         return theImage.to_dict()
+
     return form.errors, 401
 
 
