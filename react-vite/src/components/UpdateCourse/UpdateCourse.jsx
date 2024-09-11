@@ -97,7 +97,6 @@ function UpdateCourse() {
         };
 
         try {
-            // console.log("EDITCOURSE",payload);
             await dispatch(fetchUpdateCourse(payload));
         }
         catch (err) {

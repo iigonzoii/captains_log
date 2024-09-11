@@ -147,28 +147,22 @@ def new_image(course_id):
     course = Course.query.get(course_id)
     if not course:
         return {'errors': {'message': 'Course not found'}}, 400
-    # existing_review = Review.query.filter_by(user_id=current_user.id, course_id=course_id).first()
-    # if existing_review:
-    #     return {'errors': {'message': 'This user has an existing review for the course'}}, 400
+
 
     form = ImagePostForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("AboveIfformdata\n\n",form.data)
 
     if form.validate_on_submit():
-        print("INIFform\n\n",form.data['caption'])
         theImage = Image(
             user_id=current_user.id,
             course_id=course_id,
-            caption=form.data['caption'],
-            file=form.data['file'],
-            private=form.data['private']
+            caption=form.caption.data,
+            file=form.file.data,
+            private=form.private.data
             )
         db.session.add(theImage)
         db.session.commit()
-        print("img\n\n",theImage)
         return theImage.to_dict(), 201
-    print("formerror\n\n",form.errors)
     return form.errors, 401
 
 

@@ -47,8 +47,6 @@ export const fetchCurrUserImages = () => async (dispatch) => {
 export const fetchImagesByCourse = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}/images`)
     let images = await response.json()
-    // images = Object.values(images)
-    console.log("IMGTHUNK", images)
     dispatch(loadImages(images))
 }
 
@@ -96,7 +94,6 @@ const imageReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_IMAGES: {
             const newState = {}
-            console.log("ACTIONNN",action.images.images)
             action.images.images?.forEach((image) => {
                 newState[image.id] = image
             });
@@ -116,7 +113,6 @@ const imageReducer = (state = initialState, action) => {
         }
         case DELETE_IMAGE: {
             const newState = { ...state };
-            console.log("DELETE \n\n",newState)
             delete newState[action.imageId];
             return newState;
         }

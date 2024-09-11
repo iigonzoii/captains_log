@@ -50,7 +50,6 @@ export const removeCourse = (courseId) => ({
 export const fetchCourses = () => async (dispatch) => {
     const response = await fetch('/api/courses/');
     const courses = await response.json();
-    // console.log(courses)
     dispatch(loadCourses(courses.courses));
 };
 
@@ -59,15 +58,12 @@ export const fetchCourses = () => async (dispatch) => {
 export const fetchCourse = (courseId) => async (dispatch) => {
     const response = await fetch(`/api/courses/${courseId}`)
     const course = await response.json()
-    // console.log("LOADCOURSETHUNK", course)
-    // ! i added .course since im returning an object now, this may break it
     dispatch(loadCourse(course.course))
     return course
 }
 
 //* Update course by ID
 export const fetchUpdateCourse = (course) => async (dispatch) => {
-    // console.log('Course',course);
     try {
         const res = await fetch(`/api/courses/${course.id}/`, {
             method: 'PUT',
@@ -80,9 +76,6 @@ export const fetchUpdateCourse = (course) => async (dispatch) => {
 
         if (res.ok) {
             const data = await res.json();
-
-            // console.log('Data',data)
-
             dispatch(updateCourse(course.id, data));
         } else {
             console.error("Failed to load course");
@@ -99,7 +92,6 @@ export const deleteCourse = (courseId) => async (dispatch) => {
         const res = await fetch(`/api/courses/${courseId}`, {
             method: 'DELETE'
         });
-
         if (res.ok) {
             dispatch(removeCourse(courseId));
         }
@@ -116,7 +108,6 @@ export const fetchCurrUserCourses = () => async (dispatch) => {
         });
         if (res.ok) {
             const data = await res.json();
-            // console.log("DATAAAAAAAA", data)
             dispatch(loadUserCourses(data));
         } else {
             const errorData = await res.json();
@@ -136,8 +127,6 @@ export const createCourse = (course) => async (dispatch) => {
             body: JSON.stringify(course),
             headers: { "Content-Type": "application/json" }
         });
-
-        // console.log("FetchResponse", response);
 
         if (response.ok) {
             const newCourse = await response.json();
@@ -161,25 +150,16 @@ const courseReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_COURSES: {
             let newState = {}
-            // action.courses.courses.forEach(course => {console.log(course)})
             action.courses.forEach(course => {
                 newState[course.id] = course
             })
             return newState
         }
         case LOAD_COURSE: {
-            // console.log("ACTION", action)
             return { ...state, courseDetail: { ...action.course } };
-            // const newState = { ...state };
-            // const updatedCourse = {
-            //     ...action.course,
-            //     // UserCourses: action.course.UserCourses
-            // };
-            // newState[action.course.Course.id] = updatedCourse;
         }
-        // return { ...state, courseDetail: {...action.course}};
+
         case UPDATE_COURSE: {
-            // console.log(action.payload)
             return {
                 ...state,
                 courseDetail: action.payload
@@ -189,11 +169,7 @@ const courseReducer = (state = initialState, action) => {
         case CREATE_COURSE:
             {
                 const newState = { ...state };
-                // console.log("NS", newState)
-                // console.log("ACT", action.course)
-
                 newState[action.course.id] = action.course
-                // console.log(newState === state)
                 return newState
             }
 

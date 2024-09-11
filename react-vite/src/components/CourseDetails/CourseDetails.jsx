@@ -18,18 +18,12 @@ function CourseDetails() {
     const dispatch = useDispatch()
     const { course_id } = useParams()
     const [isLoaded, setIsLoaded] = useState(false)
-    // const [hideDelete, setHideDelete] = useState("")
-    // const [hideEdit, setHideEdit] = useState("")
-    // console.log("ID", course_id)
     const course = useSelector((state) => state.course.courseDetail)
-    // console.log("COURSE", course)
     const sessionUser = useSelector((state) => state.session.user);
     let images = useSelector((state) => state.image)
     let reviews = useSelector(state => state.review)
     reviews = Object.values(reviews)
     images = Object.values(images)
-    // images = Object.values(images)
-    // console.log("IMG",images)
 
 
     useEffect(() => {

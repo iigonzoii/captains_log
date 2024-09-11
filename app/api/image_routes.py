@@ -21,7 +21,7 @@ def user_images():
 
 
 #* Update image
-@image_routes.route('/<int:image_id>/', methods=['PUT'])
+@image_routes.route('/<int:image_id>', methods=['PUT'])
 @login_required
 def update_image(image_id):
     """
@@ -33,13 +33,14 @@ def update_image(image_id):
     if theImage.user_id != current_user.id:
         return {'errors': {'message': 'Unauthorized'}}, 401
 
+
     form = ImageUpdateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        theImage.caption=form.data['caption'],
-        theImage.file=form.data['file'],
-        theImage.private=form.data['private']
+        theImage.caption=form.caption.data
+        theImage.file=form.file.data
+        theImage.private=form.private.data
         db.session.add(theImage)
         db.session.commit()
         return theImage.to_dict()
