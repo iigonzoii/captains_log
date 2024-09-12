@@ -10,10 +10,6 @@ class Course(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     highlight_img = db.Column(db.String(250))
     poi = db.Column(db.String(250))
-    img_1=db.Column(db.String(250))
-    img_2=db.Column(db.String(250))
-    img_3=db.Column(db.String(250))
-    img_4=db.Column(db.String(250))
     name = db.Column(db.String(50), nullable=False)
     surface = db.Column(db.String(50))
     gas = db.Column(db.Integer)
@@ -35,10 +31,6 @@ class Course(db.Model):
             'owner_id': self.owner_id,
             'highlight_img': self.highlight_img,
             'poi': self.poi,
-            'img_1': self.img_1,
-            'img_2': self.img_2,
-            'img_3': self.img_3,
-            'img_4': self.img_4,
             'name': self.name,
             'surface': self.surface,
             'gas': self.gas,

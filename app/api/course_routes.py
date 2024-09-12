@@ -29,16 +29,13 @@ def course_by_id(course_id):
 
     if not course_details:
         return {'errors': {'message': 'Course not found'}}, 404
-    # ! this is going to break something. I was initially returning course_details.to dict, now i am returning an object where i refer to course as a key value pair.
     return {"course":course_details.to_dict(), "images":[image.to_dict() for image in images]}, 200
 
 #* Get all courses by User
 @course_routes.route('/current', methods=['GET'])
 def courses_by_user():
-    print("PRINT HELLO \n\n")
     user_id = current_user.id
     courses = Course.query.filter_by(owner_id=user_id).all()
-    print("CORSES \n\n",courses)
     if not courses:
         return {"courses":[]}, 200
     return {"courses":[course.to_dict() for course in courses]}, 200
@@ -54,10 +51,6 @@ def create_course():
         new_course = Course(
             owner_id=current_user.id,
             highlight_img=form.highlight_img.data,
-            img_1=form.img_1.data,
-            img_2=form.img_2.data,
-            img_3=form.img_3.data,
-            img_4=form.img_4.data,
             name=form.name.data,
             surface=form.surface.data,
             gas=form.gas.data,
@@ -93,10 +86,6 @@ def update_course(course_id):
 
     if form.validate_on_submit():
             course_update.highlight_img=form.highlight_img.data
-            course_update.img_1=form.img_1.data
-            course_update.img_2=form.img_2.data
-            course_update.img_3=form.img_3.data
-            course_update.img_4=form.img_4.data
             course_update.name=form.name.data
             course_update.surface=form.surface.data
             course_update.gas=form.gas.data

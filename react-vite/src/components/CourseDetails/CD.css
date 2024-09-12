@@ -2,7 +2,7 @@
     max-width: 1000px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2% 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2% 25% 25% 25% 25%;
     grid-template-areas:
         "name name name name"
         "banner banner banner banner"
@@ -16,6 +16,7 @@
 }
 .cd-banner{
     grid-area: banner;
+    object-fit: cover;
     width: 100%;
     height: 100%;
 
@@ -66,6 +67,7 @@ font-size: 30px;
     flex-direction: row;
     flex-wrap: wrap;
     grid-area: images;
+
     width: 100%;
     color: rgb(135, 129, 129);
     background-color: rgba(18, 16, 28, 0.965);
@@ -111,7 +113,7 @@ textarea {
     }
 
 
-    .cd-img-container>img {
+    .cd-img-container>div>div>img {
         height: auto;
         width: 200px;
     }
