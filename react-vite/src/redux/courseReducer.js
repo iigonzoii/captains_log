@@ -108,6 +108,7 @@ export const fetchCurrUserCourses = () => async (dispatch) => {
         });
         if (res.ok) {
             const data = await res.json();
+            console.log("DATAAAAAAAA", data)
             dispatch(loadUserCourses(data));
         } else {
             const errorData = await res.json();
@@ -156,6 +157,7 @@ const courseReducer = (state = initialState, action) => {
             return newState
         }
         case LOAD_COURSE: {
+
             return { ...state, courseDetail: { ...action.course } };
         }
 
@@ -169,7 +171,9 @@ const courseReducer = (state = initialState, action) => {
         case CREATE_COURSE:
             {
                 const newState = { ...state };
+
                 newState[action.course.id] = action.course
+
                 return newState
             }
 

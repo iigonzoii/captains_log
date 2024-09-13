@@ -80,6 +80,7 @@ font-size: 30px;
     box-sizing: border-box;
     border: none
 }
+
 .none{
     display: none;
 }
@@ -88,6 +89,7 @@ font-size: 30px;
     width: 250px;
     object-fit: contain;
     margin: 10px 5px;
+
 }
 
 textarea {

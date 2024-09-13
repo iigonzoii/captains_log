@@ -34,8 +34,10 @@ def course_by_id(course_id):
 #* Get all courses by User
 @course_routes.route('/current', methods=['GET'])
 def courses_by_user():
+    print("PRINT HELLO \n\n")
     user_id = current_user.id
     courses = Course.query.filter_by(owner_id=user_id).all()
+    print("CORSES \n\n",courses)
     if not courses:
         return {"courses":[]}, 200
     return {"courses":[course.to_dict() for course in courses]}, 200

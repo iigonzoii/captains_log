@@ -57,6 +57,7 @@ function CreateCourse() {
         };
 
         try {
+
             await dispatch(createCourse(payload));
         }
         catch (err) {
