@@ -27,12 +27,11 @@ function CourseDetails() {
 
 
     useEffect(() => {
-        // if (sessionUser.id !== images.user_id) setHideDelete("none"); setHideEdit("none")
         dispatch(fetchReviewsByCourse(+course_id))
             .then(() => dispatch(fetchImagesByCourse(+course_id)))
             .then(() => dispatch(fetchCourse(+course_id)))
             .then(() => setIsLoaded(true));
-    }, [dispatch]);
+    }, [dispatch, course_id]);
     return isLoaded && (
         <div className="cd-container">
             <div className="cd-name">{course.name}</div>
@@ -75,12 +74,12 @@ function CourseDetails() {
             <div className="cd-img-container">
                 {images.length > 0 ? images.map((image, index) => (
                     <div key={index}>
+                        <img src={image.file} />
+                        <p>{image.caption}</p>
+                        <p>{image.created_at.slice(0,17)}</p>
                         {`UserId-${course.owner_id}imageId-${image.id}`}
-                        {sessionUser && course.images.user_id !== sessionUser.id && (
-                            <div>
-                                <img src={image.file} />
-                                <p>{image.caption}</p>
-                                <p>{image.created_at}</p>
+
+                        {sessionUser && sessionUser.id === image.user_id && (
                                 <div className="review-modify-buttons">
                                     <div className={`review-modify-buttons`} >
                                         {/* ${hideEdit} */}
@@ -97,12 +96,12 @@ function CourseDetails() {
                                         />
                                     </div>
                                 </div>
-                            </div>
+
                         )}
 
                     </div>
                 )) : <p>No images yet</p>}
-                { course.owner_id == sessionUser.id && (
+                {sessionUser && sessionUser.id === course.owner_id && (
                     <div className="ad-image-button">
                         {(
                             <ImageButton course_id={course_id} />

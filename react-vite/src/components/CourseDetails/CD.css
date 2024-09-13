@@ -2,7 +2,8 @@
     max-width: 1000px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2% 25% 25% 25% 25%;
+    /* play with rows for images */
+    grid-template-rows: 2% 25% 25% 25% 1fr;
     grid-template-areas:
         "name name name name"
         "banner banner banner banner"
@@ -36,6 +37,7 @@ font-size: 30px;
     resize: none;
     box-sizing: border-box;
     border: none;
+    scrollbar-color: rgba(18, 16, 28, 0.965) rgb(135, 129, 129);
 }
 
 .cd-reviews {
@@ -47,7 +49,10 @@ font-size: 30px;
     background-color: rgba(18, 16, 28, 0.965);
     resize: none;
     box-sizing: border-box;
-    border: none
+    border: none;
+    overflow-y:scroll;
+    scrollbar-color:rgba(18, 16, 28, 0.965) rgb(135, 129, 129) ;
+
 }
 
 .cd-poi {
@@ -67,11 +72,10 @@ font-size: 30px;
     flex-direction: row;
     flex-wrap: wrap;
     grid-area: images;
-
     width: 100%;
     color: rgb(135, 129, 129);
     background-color: rgba(18, 16, 28, 0.965);
-    resize: none;
+    /* resize: none; */
     padding: 12px 20px;
     box-sizing: border-box;
     border: none
@@ -79,11 +83,11 @@ font-size: 30px;
 .none{
     display: none;
 }
-.cd-img-container>div>div>img {
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-    margin: 10px auto
+.cd-img-container>div>img {
+    height: 250px;
+    width: 250px;
+    object-fit: contain;
+    margin: 10px 5px;
 }
 
 textarea {
