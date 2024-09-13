@@ -2,7 +2,8 @@
     max-width: 1000px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2% 1fr 1fr 1fr 1fr;
+    /* play with rows for images */
+    grid-template-rows: 2% 25% 25% 25% 1fr;
     grid-template-areas:
         "name name name name"
         "banner banner banner banner"
@@ -16,6 +17,7 @@
 }
 .cd-banner{
     grid-area: banner;
+    object-fit: cover;
     width: 100%;
     height: 100%;
 
@@ -35,6 +37,7 @@ font-size: 30px;
     resize: none;
     box-sizing: border-box;
     border: none;
+    scrollbar-color: rgba(18, 16, 28, 0.965) rgb(135, 129, 129);
 }
 
 .cd-reviews {
@@ -46,7 +49,10 @@ font-size: 30px;
     background-color: rgba(18, 16, 28, 0.965);
     resize: none;
     box-sizing: border-box;
-    border: none
+    border: none;
+    overflow-y:scroll;
+    scrollbar-color:rgba(18, 16, 28, 0.965) rgb(135, 129, 129) ;
+
 }
 
 .cd-poi {
@@ -69,17 +75,21 @@ font-size: 30px;
     width: 100%;
     color: rgb(135, 129, 129);
     background-color: rgba(18, 16, 28, 0.965);
-    resize: none;
+    /* resize: none; */
     padding: 12px 20px;
     box-sizing: border-box;
     border: none
 }
 
-.cd-img-container>img {
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-    margin: 10px auto
+.none{
+    display: none;
+}
+.cd-img-container>div>img {
+    height: 250px;
+    width: 250px;
+    object-fit: contain;
+    margin: 10px 5px;
+
 }
 
 textarea {
@@ -109,7 +119,7 @@ textarea {
     }
 
 
-    .cd-img-container>img {
+    .cd-img-container>div>div>img {
         height: auto;
         width: 200px;
     }

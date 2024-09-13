@@ -17,10 +17,6 @@ function UpdateCourse() {
     //*initialize state with course data if it exists
     // const [id] = useState(course ? course.id :"")
     const [highlightImg, setHighlightImg] = useState(course ? course.highlight_img : "");
-    const [imgOne, setImgOne] = useState(course ? course.img_1 : "");
-    const [imgTwo, setImgTwo] = useState(course ? course.img_2 : "");
-    const [imgThree, setImgThree] = useState(course ? course.img_3 : "");
-    const [imgFour, setImgFour] = useState(course ? course.img_4 : "");
     const [name, setName] = useState(course ? course.name : "");
     const [surface, setSurface] = useState(course ? course.surface : 0);
     const [gas, setGas] = useState(course ? course.gas : 0);
@@ -43,10 +39,6 @@ function UpdateCourse() {
         // Update form fields when the course is loaded from the Redux store
         if (course) {
             setHighlightImg(course.highlight_img || "");
-            setImgOne(course.img_1 || "");
-            setImgTwo(course.img_2 || "");
-            setImgThree(course.img_3 || "");
-            setImgFour(course.img_4 || "");
             setName(course.name || "");
             setSurface(course.surface || 0);
             setGas(course.gas || 0);
@@ -81,10 +73,6 @@ function UpdateCourse() {
             owner_id: user.id,
             name,
             highlight_img: highlightImg,
-            img_1: imgOne,
-            img_2: imgTwo,
-            img_3: imgThree,
-            img_4: imgFour,
             surface,
             gas,
             resource_access: resourceAccess,
@@ -97,7 +85,6 @@ function UpdateCourse() {
         };
 
         try {
-            // console.log("EDITCOURSE",payload);
             await dispatch(fetchUpdateCourse(payload));
         }
         catch (err) {
@@ -120,30 +107,6 @@ function UpdateCourse() {
                     value={highlightImg}
                     onChange={e => setHighlightImg(e.target.value)}
                     placeholder="Highlight Image"
-                    className="input-field"
-                />
-                <input
-                    value={imgOne}
-                    onChange={e => setImgOne(e.target.value)}
-                    placeholder="Image One"
-                    className="input-field"
-                />
-                <input
-                    value={imgTwo}
-                    onChange={e => setImgTwo(e.target.value)}
-                    placeholder="Image Two"
-                    className="input-field"
-                />
-                <input
-                    value={imgThree}
-                    onChange={e => setImgThree(e.target.value)}
-                    placeholder="Image Three"
-                    className="input-field"
-                />
-                <input
-                    value={imgFour}
-                    onChange={e => setImgFour(e.target.value)}
-                    placeholder="Image Four"
                     className="input-field"
                 />
                 <input

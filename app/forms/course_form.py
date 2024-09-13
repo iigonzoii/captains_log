@@ -5,10 +5,6 @@ from wtforms.validators import DataRequired, Optional, Length
 class CourseForm(FlaskForm):
     owner_id = IntegerField('Owner ID', validators=[DataRequired()])
     highlight_img = StringField('Highlight Image URL', validators=[Length(max=250), Optional()])
-    img_1 = StringField('Image 1', validators=[Length(max=250), Optional()])
-    img_2 = StringField('Image 2', validators=[Length(max=250), Optional()])
-    img_3 = StringField('Image 3', validators=[Length(max=250), Optional()])
-    img_4 = StringField('Image 4', validators=[Length(max=250), Optional()])
     name = StringField('Name Your Course', validators=[DataRequired(), Length(max=50)])
     surface = StringField('Surface', validators=[ Length(max=50)])
     gas = IntegerField('Fuel availability', validators=[Optional()])

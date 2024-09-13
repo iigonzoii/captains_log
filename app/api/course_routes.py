@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 from sqlalchemy.orm import joinedload
 from flask_login import current_user, login_required
-from app.models import Course, User, Review, db
-from app.forms import CourseForm, UpdateCourseForm, ReviewPostForm
+from app.models import Course, User, Review,Image, db
+from app.forms import CourseForm, UpdateCourseForm, ReviewPostForm,ImagePostForm,ImageUpdateForm
 
 course_routes = Blueprint('courses', __name__)
 
@@ -17,15 +17,19 @@ def all_courses():
     courses_dict = [ course.to_dict() for course in courses ]
     return {"courses":courses_dict}, 200
 
-#* Get course by id
+#* Get course by id --------------------------------------------------------current feat
 @course_routes.route('/<int:course_id>/', methods=['GET'])
 def course_by_id(course_id):
     course_details = db.session.query(Course).options(
-        joinedload(Course.reviews).joinedload(Review.reviewer)
+        joinedload(Course.reviews).joinedload(Review.reviewer),
+        joinedload(Course.images).joinedload(Image.img_owner)
     ).filter(Course.id == course_id).first()
+    course_id = course_details.id
+    images = db.session.query(Image).filter(Image.course_id == course_id).all()
+
     if not course_details:
         return {'errors': {'message': 'Course not found'}}, 404
-    return course_details.to_dict(), 200
+    return {"course":course_details.to_dict(), "images":[image.to_dict() for image in images]}, 200
 
 #* Get all courses by User
 @course_routes.route('/current', methods=['GET'])
@@ -49,10 +53,6 @@ def create_course():
         new_course = Course(
             owner_id=current_user.id,
             highlight_img=form.highlight_img.data,
-            img_1=form.img_1.data,
-            img_2=form.img_2.data,
-            img_3=form.img_3.data,
-            img_4=form.img_4.data,
             name=form.name.data,
             surface=form.surface.data,
             gas=form.gas.data,
@@ -88,10 +88,6 @@ def update_course(course_id):
 
     if form.validate_on_submit():
             course_update.highlight_img=form.highlight_img.data
-            course_update.img_1=form.img_1.data
-            course_update.img_2=form.img_2.data
-            course_update.img_3=form.img_3.data
-            course_update.img_4=form.img_4.data
             course_update.name=form.name.data
             course_update.surface=form.surface.data
             course_update.gas=form.gas.data
@@ -119,8 +115,49 @@ def delete_course(course_id):
 
     return {'message': 'Course deleted successfully'}, 200
 
+        #*--------------------------Image route--------------------------------
+@course_routes.route('/<int:course_id>/images/')
+def course_images(course_id):
+    """
+    Get all images for a course
+    """
+    images = Image.query.filter_by(course_id=course_id).all()
+    if not images:
+        return {'errors': {'message': 'No existing images'}}, 404
+    return {'images': [image.to_dict() for image in images]}
 
-#*-------Review route--------
+
+
+        #*--------------------------Image route--------------------------------
+@course_routes.route('/<int:course_id>/images', methods=['POST'])
+@login_required
+def new_image(course_id):
+    """
+    Creates an image for a course
+    """
+    course = Course.query.get(course_id)
+    if not course:
+        return {'errors': {'message': 'Course not found'}}, 400
+
+
+    form = ImagePostForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        theImage = Image(
+            user_id=current_user.id,
+            course_id=course_id,
+            caption=form.caption.data,
+            file=form.file.data,
+            private=form.private.data
+            )
+        db.session.add(theImage)
+        db.session.commit()
+        return theImage.to_dict(), 201
+    return form.errors, 401
+
+
+#*----------------------Review route-------------------------
 #* Get all reviews by course id
 @course_routes.route('/<int:course_id>/reviews/')
 def course_reviews(course_id):
@@ -132,7 +169,7 @@ def course_reviews(course_id):
         return {'errors': {'message': 'No existing reviews'}}, 404
     return {'reviews': [review.to_dict() for review in reviews]}
 
-#*------ Review route---------
+#*-------------------- Review route----------------------------
 #* Create a review by course id
 @course_routes.route('/<int:course_id>/reviews/', methods=['POST'])
 # @login_required

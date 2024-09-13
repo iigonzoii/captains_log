@@ -45,10 +45,6 @@ function CreateCourse() {
             owner_id: user.id,
             name,
             highlight_img: highlightImg,
-            img_1: imgOne,
-            img_2: imgTwo,
-            img_3: imgThree,
-            img_4: imgFour,
             surface,
             gas,
             resource_access: resourceAccess,
@@ -61,7 +57,7 @@ function CreateCourse() {
         };
 
         try {
-            console.log("NEWCOURSE", payload);
+
             await dispatch(createCourse(payload));
         }
         catch (err) {
