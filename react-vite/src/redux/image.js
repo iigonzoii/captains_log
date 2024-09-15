@@ -50,16 +50,38 @@ export const fetchImagesByCourse = (courseId) => async (dispatch) => {
     dispatch(loadImages(images))
 }
 
-//* Create a image by Course ID
-export const createImage = (course_id, image) => async (dispatch) => {
-    const response = await fetch(`/api/courses/${course_id}/images`, {
-        method: "POST",
-        body: JSON.stringify(image),
-        headers: { "Content-Type": "application/json" }
-    })
-    const newImage = await response.json()
-    dispatch(addImage(newImage))
-}
+//* Create a image by Course ID--current setup
+// export const createImage = (course_id, image) => async (dispatch) => {
+//     const response = await fetch(`/api/courses/${course_id}/images`, {
+//         method: "POST",
+//         body: JSON.stringify(image),
+//         headers: { "Content-Type": "application/json" }
+//     })
+//     const newImage = await response.json()
+//     dispatch(addImage(newImage))
+// }
+
+//* Create a image by Course ID AWS
+export const createImage = (post) => async (dispatch) => {
+    const response = await fetch(`/images/new`, {
+      method: "POST",
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     "Content-Type": "application/json",
+    //   },
+      body: post
+    });
+
+    if (response.ok) {
+        const { resPost } = await response.json();
+        dispatch(addImage(resPost));
+    } else {
+        console.log("There was an error making your post!")
+    }
+};
+
+
+
 //* Update a image by ID
 export const editImage = (imageId, image) => async dispatch => {
     const response = await fetch(`/api/images/${imageId}`, {

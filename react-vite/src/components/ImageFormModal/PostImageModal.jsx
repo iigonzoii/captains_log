@@ -5,32 +5,45 @@ import { useModal } from '../../context/Modal';
 import "./ImageForm.css"
 
 
-function CreateImageModal({ course_id}) {
+function CreateImageModal({ course_id }) {
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
     const dispatch = useDispatch();
     const { closeModal } = useModal();
-
+    // * create an object with the attribute keys set to empty strings
     const [formData, setFormData] = useState({
-        file:"",
-        caption:"",
-        private:""
+        file: "",
+        caption: "",
+        private: ""
     });
     const [errors, setErrors] = useState({});
 
     const handleSubmit = async (e) => {
+        // e.preventDefault();
+        // // * variable to house the response of my createImage thunk
+        // const serverResponse = await dispatch(
+        //     createImage(course_id, formData)
+        // );
+
+        // if (serverResponse) {
+        //     setErrors(serverResponse);
+        // } else {
+        //     closeModal();
+        // }
         e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image);
+        // aws uploads can be a bit slow—displaying
+        // some sort of loading message is a good idea
+        setImageLoading(true);
+        await dispatch(createImage(formData));
+        history.push("/images");
 
-        const serverResponse = await dispatch(
-            createImage(course_id, formData)
-        );
 
-        if (serverResponse) {
-            setErrors(serverResponse);
-        } else {
-            closeModal();
-        }
     };
 
     const handleChange = (e) => {
+        // *spread in the formData as well as a key value pair of the updated target
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
@@ -41,12 +54,17 @@ function CreateImageModal({ course_id}) {
         <div className='review-form-parent'>
             <h1 className="review-form-heading">Post an image</h1>
             {errors.server && <p>{errors.server}</p>}
-            <form className="review-form-body" onSubmit={handleSubmit}>
+            <form className="review-form-body" onSubmit={handleSubmit}
+                encType="mulitpart/form-data"
+            >
                 <input
+                type="file"
+                accept="image/*"
                     placeholder='Add file here'
                     name="file"
                     value={formData.file}
-                    onChange={handleChange}
+                    // onChange={handleChange}
+                    onChange={(e) => setImage(e.target.files[0])}
                     required
                 />
                 {/* {errors.image.file && <p>{errors.image.file}</p>} */}
@@ -75,6 +93,7 @@ function CreateImageModal({ course_id}) {
 
                 <div className="review-buttons">
                     <button className="submit-button" type="submit" disabled={Object.keys(formData).length < 3} >Submit</button>
+                    {(imageLoading)&& <p>Loading...</p>}
                     <button onClick={() => closeModal()} className="cancel-button">Cancel</button>
                 </div>
             </form>
