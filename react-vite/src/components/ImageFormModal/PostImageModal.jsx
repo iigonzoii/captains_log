@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { createImage } from '../../redux/image';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
+import { useHistory } from "react-router-dom"
 import "./ImageForm.css"
 
 
 function CreateImageModal({ course_id }) {
+    const history = useHistory(); // so that we can redirect after the image upload is successful
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const dispatch = useDispatch();
